@@ -106,6 +106,10 @@ export default {
   background-size: cover;
   overflow: hidden;
 
+  @media (max-width: 1400.98px) {
+    padding: 122px 0 30px;
+  }
+
   @media (max-width: 1200.98px) {
     padding: 118px 0 20px;
   }
@@ -126,6 +130,10 @@ export default {
   margin-top: 72px;
   color: #fff;
 
+  @media (max-width: 1400.98px) {
+    margin-top: 42px;
+  }
+
   @media (max-width: 1200.98px) {
     margin-bottom: 37px;
     text-align: center;
@@ -137,9 +145,9 @@ export default {
   img {
     position: absolute;
     z-index: 1;
-    left: 50%;
+    left: 53%;
     bottom: -30px;
-    transform: translateX(-50%);
+    transform: translateX(-53%);
 
     &:first-child {
       z-index: 2;
@@ -292,6 +300,10 @@ export default {
   font-size: 14px;
   line-height: 145.5%;
 
+  @media (max-width: 1400.98px) {
+    margin-top: 80px;
+  }
+
   @media (max-width: 1200.98px) {
     max-width: 100%;
     margin-top: 10px;
@@ -374,12 +386,12 @@ export default {
 }
 
 .credit-window-calc {
-  padding-left: 30px;
+  padding-left: 50px;
   margin-top: 50px;
   display: flex;
 
   @media (max-width: 991.98px) {
-    padding-left: 50px;
+    padding-left: 45px;
   }
 
   @media (max-width: 767.98px) {

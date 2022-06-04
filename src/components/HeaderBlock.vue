@@ -70,6 +70,10 @@ export default {
   justify-content: space-between;
   min-height: 122px;
 
+  @media (max-width: 1400.98px) {
+    min-height: 100px;
+  }
+
   @media (max-width: 767.98px) {
     min-height: 80px;
   }
