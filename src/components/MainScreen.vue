@@ -15,6 +15,7 @@
         </div>
         <div class="main-screen-image">
           <img src="@/assets/images/girl.png" alt="girl" />
+          <img src="@/assets/images/sun.svg" alt="sun" />
         </div>
         <div class="main-screen-credit">
           <div class="credit-window">
@@ -101,68 +102,103 @@ export default {
   padding: 158px 0 68px;
   background-image: url("@/assets/images/main-bg.jpg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("@/assets/images/sun.png");
-    background-repeat: no-repeat;
-    background-position: center;
+  overflow: hidden;
+
+  @media (max-width: 1200.98px) {
+    padding: 118px 0 20px;
   }
 }
 
 .main-screen-wrapper {
   display: flex;
+
+  @media (max-width: 1200.98px) {
+    flex-direction: column;
+  }
 }
 
 .main-screen-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   flex: 1 1 100%;
+  margin-top: 72px;
   color: #fff;
+
+  @media (max-width: 1200.98px) {
+    margin-bottom: 37px;
+    text-align: center;
+    margin-top: 0;
+  }
 }
 
 .main-screen-image {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
+  img {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+
+    &:first-child {
+      z-index: 2;
+    }
+  }
+
+  @media (max-width: 1200.98px) {
+    img {
+      left: 0;
+      transform: translateX(0);
+      &:last-child {
+        transform: translate(-17%, 10%);
+      }
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    img {
+      left: 0;
+      bottom: -70px;
+      transform: translateX(-15%);
+      &:last-child {
+        transform: translate(-25%, 10%);
+      }
+    }
+  }
+
+  @media (max-width: 810.98px) {
+    img {
+      left: 0;
+      bottom: -70px;
+      transform: translateX(-20%);
+      &:last-child {
+        transform: translate(-30%, 10%);
+      }
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    img {
+      display: none;
+    }
+  }
 }
 
 .main-screen-credit {
   position: relative;
   z-index: 1;
   flex: 0 1 50%;
-}
 
-.main-screen-title {
-  max-width: 477px;
-  margin-bottom: 15px;
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 111.5%;
-  text-transform: uppercase;
-}
+  @media (max-width: 1200.98px) {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 
-.main-screen-text {
-  max-width: 454px;
-  font-weight: 400;
-  font-size: 27px;
-  line-height: 133.5%;
-}
-
-.main-screen-alert {
-  max-width: 300px;
-  display: inline-block;
-  margin-top: 110px;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 145.5%;
+  @media (max-width: 767.98px) {
+    justify-content: center;
+  }
 }
 
 .hot-offer-title {
@@ -179,6 +215,17 @@ export default {
     line-height: 26px;
     text-transform: uppercase;
     color: #3c4260;
+    white-space: nowrap;
+
+    @media (max-width: 767.98px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    @media (max-width: 400.98px) {
+      font-size: 16px;
+      line-height: 21px;
+    }
   }
 
   &::before {
@@ -189,15 +236,86 @@ export default {
     width: 44px;
     height: 54px;
     background-image: url("@/assets/images/fire-icon.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (max-width: 767.98px) {
+      width: 34px;
+      height: 43px;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    padding: 10px 25px 10px 55px;
+  }
+}
+
+.main-screen-title {
+  max-width: 477px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 111.5%;
+  text-transform: uppercase;
+
+  @media (max-width: 1200.98px) {
+    max-width: 100%;
+    font-size: 40px;
+    line-height: 111.5%;
+  }
+
+  @media (max-width: 767.98px) {
+    font-size: 36px;
+  }
+}
+
+.main-screen-text {
+  max-width: 454px;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 133.5%;
+
+  @media (max-width: 1200.98px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 767.98px) {
+    font-size: 20px;
+  }
+}
+
+.main-screen-alert {
+  max-width: 300px;
+  display: inline-block;
+  margin-top: 110px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 145.5%;
+
+  @media (max-width: 1200.98px) {
+    max-width: 100%;
+    margin-top: 10px;
   }
 }
 
 .credit-window {
-  max-width: 428px;
-  padding: 20px 30px;
+  width: 428px;
+  padding: 26px 26px 16px;
   background-color: #fff;
   box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.05);
   border-radius: 15px;
+
+  @media (max-width: 1200.98px) {
+    transform: translateX(-10%);
+  }
+
+  @media (max-width: 991.98px) {
+    transform: translateX(-5%);
+  }
+
+  @media (max-width: 810.98px) {
+    transform: translateX(0);
+  }
 }
 
 .credit-window-title {
@@ -206,6 +324,11 @@ export default {
   font-size: 22px;
   line-height: 26px;
   color: #45515f;
+
+  @media (max-width: 767.98px) {
+    font-size: 18px;
+    line-height: 21px;
+  }
 }
 
 .credit-window-btn {
@@ -225,6 +348,12 @@ export default {
   text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
   background: linear-gradient(81.55deg, #ffc83e 33.93%, #ff7347 73.78%);
   border-radius: 8px;
+
+  @media (max-width: 767.98px) {
+    padding: 10px 28px;
+    font-size: 16px;
+    line-height: 19px;
+  }
 }
 
 .credit-window-sum {
@@ -248,18 +377,26 @@ export default {
   padding-left: 30px;
   margin-top: 50px;
   display: flex;
+
+  @media (max-width: 991.98px) {
+    padding-left: 50px;
+  }
+
+  @media (max-width: 767.98px) {
+    padding-left: 0;
+    margin-top: 20px;
+  }
 }
 .calc-row {
   flex: 0 1 50%;
-
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
 }
+
 .calc-item {
   display: flex;
   flex-direction: column;
+  padding-bottom: 20px;
 }
+
 .calc-title {
   margin-bottom: 2px;
   font-weight: 300;

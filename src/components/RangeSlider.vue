@@ -83,15 +83,16 @@ export default {
         selectorValue.style.cssText += "transform:translateX(0)";
       }
     },
+
     termSlider(input, selector, selectorValue, progress) {
       selector.style.left = input.value + "%";
       progress.style.width = input.value + "%";
       selectorValue.textContent = input.value;
 
       if (input.value > 91) {
-        selectorValue.style.cssText += "transform:translateX(-50%)";
-      } else if (input.value < 2) {
-        selectorValue.style.cssText += "transform:translateX(10%)";
+        selectorValue.style.cssText += "transform:translateX(-10%)";
+      } else if (input.value < 1) {
+        selectorValue.style.cssText += "transform:translateX(100%)";
       } else {
         selectorValue.style.cssText += "transform:translateX(0)";
       }
@@ -147,12 +148,19 @@ export default {
 .range-selector-value {
   position: absolute;
   top: -28px;
-  left: -20px;
+  left: -30px;
+  width: 80px;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
   color: #45515f;
   white-space: nowrap;
+  text-align: center;
+
+  @media (max-width: 767.98px) {
+    font-size: 18px;
+    line-height: 21px;
+  }
 }
 
 .range-progress {
