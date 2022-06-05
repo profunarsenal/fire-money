@@ -7,6 +7,7 @@
       <receiving-section />
       <payment-section />
       <reviews-section :width="width" />
+      <clients-section :width="width" />
     </main>
   </div>
 </template>
@@ -18,6 +19,7 @@ import SuggestionsSection from "@/components/SuggestionsSection.vue";
 import ReceivingSection from "@/components/ReceivingSection.vue";
 import PaymentSection from "@/components/PaymentSection.vue";
 import ReviewsSection from "@/components/ReviewsSection.vue";
+import ClientsSection from "@/components/ClientsSection.vue";
 
 export default {
   name: "App",
@@ -29,6 +31,7 @@ export default {
     ReceivingSection,
     PaymentSection,
     ReviewsSection,
+    ClientsSection,
   },
 
   data: () => ({
