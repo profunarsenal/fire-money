@@ -14,7 +14,7 @@
           >
         </div>
         <div class="main-screen-image">
-          <img src="@/assets/images/girl.png" alt="girl" />
+          <img src="@/assets/images/girl-sun.png" alt="girl" />
           <img src="@/assets/images/sun.svg" alt="sun" />
         </div>
         <div class="main-screen-credit">
@@ -146,7 +146,7 @@ export default {
     position: absolute;
     z-index: 1;
     left: 53%;
-    bottom: -30px;
+    bottom: -55px;
     transform: translateX(-53%);
 
     &:first-child {
@@ -157,7 +157,7 @@ export default {
   @media (max-width: 1200.98px) {
     img {
       left: 0;
-      transform: translateX(0);
+      transform: translateX(30%);
       &:last-child {
         transform: translate(-17%, 10%);
       }
@@ -168,7 +168,7 @@ export default {
     img {
       left: 0;
       bottom: -70px;
-      transform: translateX(-15%);
+      transform: translateX(10%);
       &:last-child {
         transform: translate(-25%, 10%);
       }
@@ -179,7 +179,7 @@ export default {
     img {
       left: 0;
       bottom: -70px;
-      transform: translateX(-20%);
+      transform: translateX(0);
       &:last-child {
         transform: translate(-30%, 10%);
       }
@@ -391,7 +391,7 @@ export default {
   display: flex;
 
   @media (max-width: 991.98px) {
-    padding-left: 45px;
+    padding-left: 55px;
   }
 
   @media (max-width: 767.98px) {
