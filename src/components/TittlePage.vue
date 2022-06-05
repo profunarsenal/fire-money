@@ -20,5 +20,15 @@ export default {
   line-height: 45px;
   color: #45515f;
   text-align: center;
+
+  @media (max-width: 576.98px) {
+    font-size: 33px;
+    line-height: 40px;
+  }
+
+  @media (max-width: 480.98px) {
+    font-size: 24px;
+    line-height: 35px;
+  }
 }
 </style>
