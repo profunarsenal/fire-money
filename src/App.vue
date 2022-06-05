@@ -4,6 +4,7 @@
     <main>
       <main-screen />
       <suggestions-section />
+      <receiving-section />
     </main>
   </div>
 </template>
@@ -12,6 +13,7 @@
 import HeaderBlock from "@/components/HeaderBlock.vue";
 import MainScreen from "@/components/MainScreen.vue";
 import SuggestionsSection from "@/components/SuggestionsSection.vue";
+import ReceivingSection from "@/components/ReceivingSection.vue";
 
 export default {
   name: "App",
@@ -20,6 +22,7 @@ export default {
     HeaderBlock,
     MainScreen,
     SuggestionsSection,
+    ReceivingSection,
   },
 };
 </script>
