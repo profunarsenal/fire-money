@@ -1,11 +1,12 @@
 <template>
   <div class="App">
-    <header-block />
+    <header-block :width="width" />
     <main>
       <main-screen />
       <suggestions-section />
       <receiving-section />
       <payment-section />
+      <reviews-section :width="width" />
     </main>
   </div>
 </template>
@@ -16,6 +17,7 @@ import MainScreen from "@/components/MainScreen.vue";
 import SuggestionsSection from "@/components/SuggestionsSection.vue";
 import ReceivingSection from "@/components/ReceivingSection.vue";
 import PaymentSection from "@/components/PaymentSection.vue";
+import ReviewsSection from "@/components/ReviewsSection.vue";
 
 export default {
   name: "App",
@@ -26,6 +28,21 @@ export default {
     SuggestionsSection,
     ReceivingSection,
     PaymentSection,
+    ReviewsSection,
+  },
+
+  data: () => ({
+    width: window.innerWidth,
+  }),
+
+  created() {
+    window.addEventListener("resize", this.updateWidth);
+  },
+
+  methods: {
+    updateWidth() {
+      this.width = window.innerWidth;
+    },
   },
 };
 </script>

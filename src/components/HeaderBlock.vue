@@ -39,19 +39,7 @@
 
 <script>
 export default {
-  data: () => ({
-    width: window.innerWidth,
-  }),
-
-  created() {
-    window.addEventListener("resize", this.updateWidth);
-  },
-
-  methods: {
-    updateWidth() {
-      this.width = window.innerWidth;
-    },
-  },
+  props: ["width"],
 };
 </script>
 
