@@ -66,6 +66,10 @@ export default {
 <style lang="scss" scoped>
 .receiving {
   padding: 50px 0;
+  
+    @media (max-width: 767.98px) {
+    padding: 30px 0;
+  }
 }
 
 .receiving-scheme {
