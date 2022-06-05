@@ -21,9 +21,9 @@
         <div class="header-btns">
           <button class="header-btn" type="button">
             {{
-              width < 360
+              width <= 360
                 ? "вход"
-                : width < 767
+                : width > 360 && width < 767
                 ? "вход в кабинет"
                 : "вход в личный кабинет"
             }}
