@@ -173,6 +173,7 @@ export default {
 .reviews-items {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   margin-bottom: 35px;
 }
 
@@ -185,6 +186,15 @@ export default {
   &:not(:last-child) {
     margin-right: 28px;
   }
+
+  @media (max-width: 767.98px) {
+    flex: 0 1 80%;
+  }
+
+  @media (max-width: 576.98px) {
+    flex: 0 1 100%;
+    padding: 20px 24px;
+  }
 }
 
 .reviews-name {
@@ -193,6 +203,11 @@ export default {
   font-size: 18px;
   line-height: 21px;
   color: #45515f;
+
+  @media (max-width: 576.98px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
 }
 
 .reviews-location {
@@ -213,6 +228,11 @@ export default {
     background-image: url("@/assets/images/location.svg");
     background-repeat: no-repeat;
   }
+
+  @media (max-width: 576.98px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 
 .reviews-text {
@@ -221,6 +241,11 @@ export default {
   font-size: 16px;
   line-height: 19px;
   color: #536473;
+
+  @media (max-width: 576.98px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 
 .reviews-avatar {
@@ -228,6 +253,11 @@ export default {
   height: 96px;
   border-radius: 50%;
   object-fit: cover;
+
+  @media (max-width: 576.98px) {
+    width: 76px;
+    height: 76px;
+  }
 }
 
 .reviews-btns {
