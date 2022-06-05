@@ -5,6 +5,7 @@
       <main-screen />
       <suggestions-section />
       <receiving-section />
+      <payment-section />
     </main>
   </div>
 </template>
@@ -14,6 +15,7 @@ import HeaderBlock from "@/components/HeaderBlock.vue";
 import MainScreen from "@/components/MainScreen.vue";
 import SuggestionsSection from "@/components/SuggestionsSection.vue";
 import ReceivingSection from "@/components/ReceivingSection.vue";
+import PaymentSection from "@/components/PaymentSection.vue";
 
 export default {
   name: "App",
@@ -23,6 +25,7 @@ export default {
     MainScreen,
     SuggestionsSection,
     ReceivingSection,
+    PaymentSection,
   },
 };
 </script>
