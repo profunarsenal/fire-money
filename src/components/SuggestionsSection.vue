@@ -91,7 +91,7 @@ export default {
 .suggestions-title {
   margin-bottom: 36px;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 769.98px) {
     margin-bottom: 26px;
   }
 }
@@ -110,6 +110,7 @@ export default {
 .suggestions-item {
   position: relative;
   flex: 0 1 30%;
+  min-width: 350px;
   padding: 35px 60px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 4px 44px rgba(84, 104, 123, 0.05);
@@ -118,10 +119,10 @@ export default {
   margin: 0 10px 20px;
 
   @media (max-width: 1254.98px) {
-    flex: 0 1 50%;
+    flex: 0 1 30%;
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 769.98px) {
     flex: 0 0 100%;
     display: flex;
     flex-direction: column;
@@ -146,7 +147,7 @@ export default {
     color: #ffc83e;
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 769.98px) {
     text-align: center;
   }
 
@@ -158,7 +159,7 @@ export default {
 }
 
 .suggestions-info {
-  @media (max-width: 767.98px) {
+  @media (max-width: 769.98px) {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -178,7 +179,6 @@ export default {
   @media (max-width: 480.98px) {
     margin: 0 10px;
     font-size: 13px;
-    line-height: 161%;
   }
 
   span {

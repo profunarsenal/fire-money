@@ -113,6 +113,10 @@ export default {
   @media (max-width: 1200.98px) {
     padding: 118px 0 20px;
   }
+
+  @media (max-width: 767.98px) {
+    padding: 88px 0 20px;
+  }
 }
 
 .main-screen-wrapper {
