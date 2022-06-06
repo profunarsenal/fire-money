@@ -75,6 +75,7 @@ export default {
 <style lang="scss" scoped>
 .about {
   padding: 50px 0;
+  background: rgba(255, 255, 255, 0.95);
 
   @media (max-width: 767.98px) {
     paddding: 30px 0;
