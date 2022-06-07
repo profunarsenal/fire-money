@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header-wrapper">
         <logo-component />
-        <navigation-component />
+        <header-navigation />
         <div class="header-btns">
           <button class="header-btn" type="button">
             {{
@@ -25,12 +25,12 @@
 
 <script>
 import LogoComponent from "@/components/LogoComponent.vue";
-import NavigationComponent from "@/components/NavigationComponent.vue";
+import HeaderNavigation from "@/components/HeaderNavigation.vue";
 
 export default {
   components: {
     LogoComponent,
-    NavigationComponent,
+    HeaderNavigation,
   },
 
   props: ["width"],

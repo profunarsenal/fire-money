@@ -1,0 +1,66 @@
+<template>
+  <nav class="navigation">
+    <ul class="menu">
+      <li class="menu-item">
+        <a href="#" class="menu-link">Почему мы?</a>
+      </li>
+      <li class="menu-item">
+        <a href="#" class="menu-link">О сервисе</a>
+      </li>
+      <li class="menu-item">
+        <a href="#" class="menu-link">Вопросы-ответы</a>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<style lang="scss" scoped>
+.navigation {
+  padding: 0 15px;
+
+  @media (max-width: 480.98px) {
+    padding: 15px 0;
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 480.98px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.menu-item {
+  &:not(:last-child) {
+    margin-right: 60px;
+  }
+
+  @media (max-width: 576.98px) {
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  @media (max-width: 480.98px) {
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.menu-link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fff;
+
+  @media (max-width: 576.98px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+</style>

@@ -11,7 +11,7 @@
       <about-section />
       <questions-section />
       <banner-section />
-      <footer-block />
+      <footer-block :width="width"/>
     </main>
   </div>
 </template>
