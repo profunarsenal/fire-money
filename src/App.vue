@@ -11,6 +11,7 @@
       <about-section />
       <questions-section />
       <banner-section />
+      <footer-block />
     </main>
   </div>
 </template>
@@ -26,6 +27,7 @@ import ClientsSection from "@/components/ClientsSection.vue";
 import AboutSection from "@/components/AboutSection.vue";
 import QuestionsSection from "@/components/QuestionsSection.vue";
 import BannerSection from "@/components/BannerSection.vue";
+import FooterBlock from "@/components/FooterBlock.vue";
 
 export default {
   name: "App",
@@ -41,6 +43,7 @@ export default {
     AboutSection,
     QuestionsSection,
     BannerSection,
+    FooterBlock,
   },
 
   data: () => ({
