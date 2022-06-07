@@ -2,22 +2,8 @@
   <header class="header">
     <div class="container">
       <div class="header-wrapper">
-        <a href="#" class="logo">
-          <img src="@/assets/images/FireMoney.svg" alt="FireMoney" />
-        </a>
-        <nav class="navigation">
-          <ul class="menu">
-            <li class="menu-item">
-              <a href="#" class="menu-link">Почему мы?</a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">О сервисе</a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">Вопросы-ответы</a>
-            </li>
-          </ul>
-        </nav>
+        <logo-component />
+        <navigation-component />
         <div class="header-btns">
           <button class="header-btn" type="button">
             {{
@@ -38,7 +24,15 @@
 </template>
 
 <script>
+import LogoComponent from "@/components/LogoComponent.vue";
+import NavigationComponent from "@/components/NavigationComponent.vue";
+
 export default {
+  components: {
+    LogoComponent,
+    NavigationComponent,
+  },
+
   props: ["width"],
 };
 </script>
@@ -64,81 +58,6 @@ export default {
 
   @media (max-width: 767.98px) {
     min-height: 80px;
-  }
-}
-
-.logo {
-  margin-right: 20px;
-
-  img {
-    width: 164px;
-    height: 26px;
-  }
-
-  @media (max-width: 767.98px) {
-    img {
-      width: 126px;
-      height: 24px;
-    }
-  }
-}
-
-.navigation {
-  padding: 0 15px;
-
-  @media (max-width: 767.98px) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    padding: 80px 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: orange;
-    transform: translateY(-100%);
-  }
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 767.98px) {
-    flex-direction: column;
-  }
-}
-
-.menu-item {
-  &:not(:last-child) {
-    margin-right: 60px;
-
-    @media (max-width: 991.98px) {
-      margin-right: 30px;
-    }
-
-    @media (max-width: 767.98px) {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  }
-}
-
-.menu-link {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-  color: #fff;
-
-  @media (max-width: 991.98px) {
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  @media (max-width: 767.98px) {
-    font-size: 18px;
-    line-height: 21px;
   }
 }
 
