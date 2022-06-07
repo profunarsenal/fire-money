@@ -10,6 +10,7 @@
       <clients-section :width="width" />
       <about-section />
       <questions-section />
+      <banner-section />
     </main>
   </div>
 </template>
@@ -24,6 +25,7 @@ import ReviewsSection from "@/components/ReviewsSection.vue";
 import ClientsSection from "@/components/ClientsSection.vue";
 import AboutSection from "@/components/AboutSection.vue";
 import QuestionsSection from "@/components/QuestionsSection.vue";
+import BannerSection from "@/components/BannerSection.vue";
 
 export default {
   name: "App",
@@ -38,6 +40,7 @@ export default {
     ClientsSection,
     AboutSection,
     QuestionsSection,
+    BannerSection,
   },
 
   data: () => ({
