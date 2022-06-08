@@ -1,4 +1,4 @@
-# fire-money
+# fire-money (проект находится в разработке)
 
 ## Project setup
 ```
