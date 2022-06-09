@@ -32,6 +32,14 @@ export default {
   margin-bottom: 20px;
   background: #f6f9fc;
   border-radius: 22px;
+  transition: all 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 2px 2px 4px #ececec;
+    }
+  }
 
   &:not(:last-child) {
     margin-right: 30px;
