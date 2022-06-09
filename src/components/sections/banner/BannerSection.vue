@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import TittlePage from "@/components/TittlePage.vue";
-import ButtonPrimary from "@/components/ButtonPrimary.vue";
+import TittlePage from "@/components/repeating-components/TittlePage.vue";
+import ButtonPrimary from "@/components/repeating-components/ButtonPrimary.vue";
 
 export default {
   components: {

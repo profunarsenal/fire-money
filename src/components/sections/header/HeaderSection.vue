@@ -3,13 +3,13 @@
     <div class="container">
       <div class="header-wrapper">
         <logo-component />
-        <header-navigation />
+        <navigation-panel v-if="width > 767" />
         <div class="header-btns">
           <button class="header-btn" type="button">
             {{
               width <= 360
                 ? "вход"
-                : width > 360 && width < 767
+                : width > 360 && width < 992
                 ? "вход в кабинет"
                 : "вход в личный кабинет"
             }}
@@ -24,13 +24,13 @@
 </template>
 
 <script>
-import LogoComponent from "@/components/LogoComponent.vue";
-import HeaderNavigation from "@/components/HeaderNavigation.vue";
+import LogoComponent from "@/components/repeating-components/LogoComponent.vue";
+import NavigationPanel from "@/components/repeating-components/NavigationPanel.vue";
 
 export default {
   components: {
     LogoComponent,
-    HeaderNavigation,
+    NavigationPanel,
   },
 
   props: ["width"],
@@ -78,7 +78,7 @@ export default {
   border-radius: 8px;
   white-space: nowrap;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 991.98px) {
     padding: 12px 20px;
     font-size: 12px;
     line-height: 14px;

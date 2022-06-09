@@ -18,61 +18,7 @@
           <img src="@/assets/images/sun.svg" alt="sun" />
         </div>
         <div class="main-screen-credit">
-          <div class="credit-window">
-            <div class="credit-window-sum">
-              <div class="credit-window-title">Cумма кредита</div>
-              <range-slider
-                minValue="1000"
-                maxValue="100000"
-                valueRange="50000"
-                stepRange="1000"
-                className="range sum-range"
-              />
-              <div class="credit-window-prompts">
-                <span class="credit-window-prompt">1 000 ₽ </span>
-                <span class="credit-window-prompt">100 000 ₽ </span>
-              </div>
-            </div>
-            <div class="credit-window-term">
-              <div class="credit-window-title">Срок кредита</div>
-              <range-slider
-                minValue="1"
-                maxValue="100"
-                valueRange="50"
-                stepRange="1"
-                className="range term-range"
-              />
-              <div class="credit-window-prompts">
-                <span class="credit-window-prompt">от 1 дня</span>
-                <span class="credit-window-prompt">до 100 дней</span>
-              </div>
-            </div>
-            <div class="credit-window-btn">
-              <button-primary />
-            </div>
-            <div class="credit-window-calc">
-              <div class="calc-row">
-                <div class="calc-item">
-                  <span class="calc-title">Вы берете</span>
-                  <span class="calc-value">20 000 ₽ </span>
-                </div>
-                <div class="calc-item">
-                  <span class="calc-title">К возврату</span>
-                  <span class="calc-value">25 650 ₽ </span>
-                </div>
-              </div>
-              <div class="calc-row">
-                <div class="calc-item">
-                  <span class="calc-title">Дата возврата</span>
-                  <span class="calc-value">08 января 2022</span>
-                </div>
-                <div class="calc-item">
-                  <span class="calc-title">Ежемесячный платеж</span>
-                  <span class="calc-value">5 650 ₽ </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <window-credit />
         </div>
       </div>
     </div>
@@ -80,23 +26,14 @@
 </template>
 
 <script>
-import RangeSlider from "@/components/RangeSlider.vue";
-import ButtonPrimary from "@/components/ButtonPrimary.vue";
+import windowCredit from "@/components/sections/main/windowCredit.vue";
 
 export default {
   components: {
-    RangeSlider,
-    ButtonPrimary,
+    windowCredit,
   },
-
-  data() {
-    return {};
-  },
-
-  methods: {},
 };
 </script>
-
 
 <style lang="scss" scoped>
 .main-screen {

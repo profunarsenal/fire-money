@@ -38,9 +38,9 @@
     margin-right: 60px;
   }
 
-  @media (max-width: 576.98px) {
+  @media (max-width: 991.98px) {
     &:not(:last-child) {
-      margin-right: 30px;
+      margin-right: 20px;
     }
   }
 
@@ -57,8 +57,9 @@
   font-size: 18px;
   line-height: 21px;
   color: #fff;
+  white-space: nowrap;
 
-  @media (max-width: 576.98px) {
+  @media (max-width: 991.98px) {
     font-size: 16px;
     line-height: 19px;
   }

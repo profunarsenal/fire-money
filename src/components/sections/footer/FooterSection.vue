@@ -4,7 +4,7 @@
       <div class="footer-wrapper">
         <div class="footer-header">
           <logo-component class="footer-logo" />
-          <header-navigation v-if="width >= 1160" />
+          <navigation-panel v-if="width >= 1160" />
           <div class="footer-contacts">
             <a href="mailto: Kustohelp@gmail.com" class="contacts-mail">
               Kustohelp@gmail.com
@@ -14,7 +14,7 @@
             >
           </div>
         </div>
-        <footer-navigation class="footer-nav" v-if="width < 1160" />
+        <navigation-panel class="footer-nav" v-if="width < 1160" />
         <credit-list />
         <div class="banks-cards">
           <div class="cards">
@@ -98,16 +98,14 @@
 </template>
 
 <script>
-import LogoComponent from "@/components/LogoComponent.vue";
-import HeaderNavigation from "@/components/HeaderNavigation.vue";
-import FooterNavigation from "@/components/FooterNavigation.vue";
-import CreditList from "@/components/CreditList.vue";
+import LogoComponent from "@/components/repeating-components/LogoComponent.vue";
+import NavigationPanel from "@/components/repeating-components/NavigationPanel.vue";
+import CreditList from "@/components/sections/footer/CreditList.vue";
 
 export default {
   components: {
     LogoComponent,
-    HeaderNavigation,
-    FooterNavigation,
+    NavigationPanel,
     CreditList,
   },
 

@@ -52,8 +52,8 @@
 </template>
 
 <script>
-import TittlePage from "@/components/TittlePage.vue";
-import ButtonPrimary from "@/components/ButtonPrimary.vue";
+import TittlePage from "@/components/repeating-components/TittlePage.vue";
+import ButtonPrimary from "@/components/repeating-components/ButtonPrimary.vue";
 
 export default {
   components: {
@@ -66,8 +66,8 @@ export default {
 <style lang="scss" scoped>
 .receiving {
   padding: 50px 0;
-  
-    @media (max-width: 767.98px) {
+
+  @media (max-width: 767.98px) {
     padding: 30px 0;
   }
 }

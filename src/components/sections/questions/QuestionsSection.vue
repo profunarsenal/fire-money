@@ -199,7 +199,7 @@
 </template>
 
 <script>
-import TittlePage from "@/components/TittlePage.vue";
+import TittlePage from "@/components/repeating-components/TittlePage.vue";
 
 export default {
   components: {

@@ -1,70 +1,30 @@
 <template>
-  <section class="clients">
-    <div class="container">
-      <div class="clients-wrapper">
-        <tittle-page class="clients-title" title="Наши клиенты" />
-        <div class="clients-items">
-          <div class="clients-item clients-item--refusal">
-            <h6 class="clients-name">Екатерина Романова</h6>
-            <div class="clients-status">Получила отказ 45 сек назад</div>
-            <div class="clients-location">г. Москва</div>
-          </div>
-          <div v-if="width > 767" class="clients-item clients-item--success">
-            <h6 class="clients-name">Игорь Николаев</h6>
-            <div class="clients-status">Взял 5 000 ₽ 2 мин назад</div>
-            <div class="clients-location">г. Москва</div>
-          </div>
-          <div v-if="width > 1198" class="clients-item clients-item--return">
-            <h6 class="clients-name">Светлана Борисовна</h6>
-            <div class="clients-status">Внес на счет 12 000 ₽ 45 сек назад</div>
-            <div class="clients-location">г. Москва</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div
+    class="clients-item"
+    :class="{
+      'clients-item--refusal': client.status === 'refusal',
+      'clients-item--success': client.status === 'success',
+      'clients-item--return': client.status === 'return',
+    }"
+  >
+    <h6 class="clients-name">{{ client.user }}</h6>
+    <div class="clients-status">{{ client.message }}</div>
+    <div class="clients-location">{{ client.city }}</div>
+  </div>
 </template>
 
 <script>
-import TittlePage from "@/components/TittlePage.vue";
-
 export default {
-  components: {
-    TittlePage,
+  props: {
+    client: {
+      type: Object,
+      required: true,
+    },
   },
-
-  props: ["width"],
 };
 </script>
 
 <style lang="scss" scoped>
-.clients {
-  padding: 50px 0;
-  background-image: url("@/assets/images/clients-bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  @media (max-width: 767.98px) {
-    padding: 30px 0;
-  }
-}
-
-.clients-title {
-  margin-bottom: 36px;
-  color: #fff;
-
-  @media (max-width: 767.98px) {
-    margin-bottom: 20px;
-  }
-}
-
-.clients-items {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
 .clients-item {
   position: relative;
   flex: 0 1 33%;
