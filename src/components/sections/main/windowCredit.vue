@@ -78,20 +78,7 @@ export default {
       returnSum: 0,
       monthPayment: 0,
       returnDate: "",
-      monthArray: [
-        "января",
-        "февраля",
-        "марта",
-        "апреля",
-        "мая",
-        "июня",
-        "июля",
-        "августа",
-        "сентября",
-        "октября",
-        "ноября",
-        "декабря",
-      ],
+      monthArray: this.$store.getters["getMonth"],
     };
   },
 
@@ -129,14 +116,16 @@ export default {
     },
 
     formulaReturnSum() {
-      if (+this.termSliderValue <= 10) {
-        return (this.creditSum / 100) * 8;
-      } else if (+this.termSliderValue > 10 && +this.termSliderValue <= 30) {
+      if (+this.termSliderValue <= 5) {
+        return (this.creditSum / 100) * 10;
+      } else if (+this.termSliderValue > 5 && +this.termSliderValue <= 15) {
         return (this.creditSum / 100) * 13;
-      } else if (+this.termSliderValue > 30 && +this.termSliderValue <= 60) {
+      } else if (+this.termSliderValue > 15 && +this.termSliderValue <= 30) {
+        return (this.creditSum / 100) * 17;
+      } else if (+this.termSliderValue > 30 && +this.termSliderValue <= 50) {
         return (this.creditSum / 100) * 21;
       } else {
-        return (this.creditSum / 100) * 26;
+        return (this.creditSum / 100) * 25;
       }
     },
   },

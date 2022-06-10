@@ -32,7 +32,7 @@
     <div class="suggestions-info">
       <div class="suggestions-item-date">
         Дата возврата:
-        <span>{{ suggestion.dateReturn }}</span>
+        <span>{{ dateReturn }}</span>
       </div>
       <div class="suggestions-item-sum">
         К возврату:
@@ -48,6 +48,22 @@ export default {
     suggestion: {
       type: Object,
       required: true,
+    },
+  },
+
+  data() {
+    return {
+      monthArray: this.$store.getters["getMonth"],
+    };
+  },
+
+  computed: {
+    dateReturn() {
+      const date = new Date(86400000 * this.suggestion.term + Date.now());
+
+      return `${date.getDate()} ${
+        this.monthArray[date.getMonth()]
+      } ${date.getFullYear()}`;
     },
   },
 };
