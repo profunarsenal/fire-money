@@ -1,18 +1,54 @@
 <template>
-  <button class="btn-primary" type="button">Оформить заявку</button>
+  <button class="btn-primary" type="button">
+    <span>Оформить заявку</span>
+  </button>
 </template>
+
+<script>
+export default {};
+</script>
 
 <style lang="scss" scoped>
 .btn-primary {
   padding: 22px 44px;
-  font-weight: 700;
   font-size: 18px;
+  font-weight: 700;
   line-height: 21px;
+  color: #fff;
+  text-align: center;
   text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
-  background: linear-gradient(81.55deg, #ffc83e 33.93%, #ff7347 73.78%);
+  border: none;
+  background-size: 300% 100%;
   border-radius: 8px;
+  cursor: pointer;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+  background-image: linear-gradient(
+    to right,
+    #ffc83e,
+    #ff7347,
+    #fa7199,
+    #e85a19
+  );
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-position: 100% 0;
+      moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+  }
 
   @media (max-width: 767.98px) {
     padding: 10px 28px;

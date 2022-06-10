@@ -129,9 +129,17 @@ export default {
   line-height: 15px;
   text-transform: uppercase;
   color: #fff;
-  background: #ff7b00;
+  background-color: #ff7b00;
   border-radius: 8px;
   white-space: nowrap;
+  transition: all 0.3s ease;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #ff7b00;
+      background-color: #ffffff;
+    }
+  }
 
   @media (max-width: 991.98px) {
     padding: 12px 20px;

@@ -94,6 +94,15 @@ export default {
   border: 1px solid #c9d2dd;
   border-radius: 8px;
   text-align: center;
+  transition: all 0.3s ease;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #ffc83e;
+      border: 1px solid #ffc83e;
+      background-color: #ffffff;
+    }
+  }
 
   @media (max-width: 767.98px) {
     padding: 10px 28px;

@@ -285,6 +285,13 @@ export default {
 .agreement-link {
   color: #ffffff;
   text-decoration: underline;
+  transition: color 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #e9e9e9;
+    }
+  }
 }
 
 .terms {
@@ -416,6 +423,13 @@ export default {
   border: 1px solid #fefefe;
   background-color: transparent;
   border-radius: 8px;
+  transition: all 0.3s ease;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #fefefe2e;
+    }
+  }
 
   @media (max-width: 576.98px) {
     margin-right: 18px;
