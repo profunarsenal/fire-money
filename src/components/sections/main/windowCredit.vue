@@ -99,14 +99,17 @@ export default {
     this.updateCalc();
   },
 
-  methods: {
-    updateCalc() {
-      this.creditSum = +this.sumSliderValue;
-      this.returnSum = this.creditSum + this.formulaReturnSum();
-      this.monthPayment = this.formulaMonthPayment();
-      this.returnDate = this.getDateMonthPayment();
+  watch: {
+    sumSliderValue() {
+      this.updateCalc();
     },
 
+    termSliderValue() {
+      this.updateCalc();
+    },
+  },
+
+  computed: {
     getDateMonthPayment() {
       const date = new Date(86400000 * +this.termSliderValue + Date.now());
 
@@ -136,6 +139,15 @@ export default {
         return (this.creditSum / 100) * 26;
       }
     },
+  },
+
+  methods: {
+    updateCalc() {
+      this.creditSum = +this.sumSliderValue;
+      this.returnSum = this.creditSum + this.formulaReturnSum;
+      this.monthPayment = this.formulaMonthPayment;
+      this.returnDate = this.getDateMonthPayment;
+    },
 
     termSlider(event, selector, value, progress) {
       selector.style.left = event.target.value + "%";
@@ -149,8 +161,6 @@ export default {
       } else {
         value.style.cssText += "transform:translateX(0)";
       }
-
-      this.updateCalc();
     },
 
     sumSlider(event, selector, value, progress) {
@@ -165,8 +175,6 @@ export default {
       } else {
         value.style.cssText += "transform:translateX(0)";
       }
-
-      this.updateCalc();
     },
   },
 };
