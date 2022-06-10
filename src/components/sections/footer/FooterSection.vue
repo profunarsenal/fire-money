@@ -173,6 +173,15 @@ export default {
     height: 15px;
     background-image: url("@/assets/images/letter-icon.svg");
     background-repeat: no-repeat;
+    transition: all 0.3s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::before {
+        transform: rotate(-360deg);
+      }
+    }
   }
 }
 
@@ -194,6 +203,15 @@ export default {
     height: 19px;
     background-image: url("@/assets/images/phone-icon.svg");
     background-repeat: no-repeat;
+    transition: all 0.3s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::before {
+        transform: rotate(-360deg);
+      }
+    }
   }
 
   @media (max-width: 767.98px) {
@@ -382,6 +400,13 @@ export default {
   position: relative;
   width: 30px;
   height: 30px;
+  transition: all 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
 
   &:not(:last-child) {
     margin-right: 46px;
@@ -389,7 +414,7 @@ export default {
     &::after {
       content: "";
       position: absolute;
-      top: -5px;
+      top: 0;
       right: -20px;
       width: 1px;
       height: 100%;
@@ -404,7 +429,7 @@ export default {
       &::after {
         content: "";
         position: absolute;
-        top: -5px;
+        top: 0;
         right: -10px;
         width: 1px;
       }
