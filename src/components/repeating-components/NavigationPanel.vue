@@ -69,11 +69,32 @@ export default {
 }
 
 .menu-link {
+  position: relative;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
   color: #fff;
   white-space: nowrap;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease-out;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
 
   @media (max-width: 991.98px) {
     font-size: 16px;
