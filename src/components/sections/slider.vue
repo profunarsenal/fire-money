@@ -3,19 +3,14 @@
     <input
       ref="rangeSlider"
       @input="updateValue"
-      v-model="modelValue"
       class="range-slider"
       type="range"
       name="range"
-      :min="minValue"
-      :max="maxValue"
-      :step="stepValue"
+      v-model="modelValue"
     />
     <div ref="rangeSelector" class="range-selector">
       <div class="range-selector-btn"></div>
-      <div ref="rangeSelectorValue" class="range-selector-value">
-        {{ valueRange }}
-      </div>
+      <div ref="rangeSelectorValue" class="range-selector-value">50</div>
     </div>
     <div class="range-background"></div>
     <div ref="rangeProgress" class="range-progress"></div>
@@ -26,21 +21,6 @@
 export default {
   props: {
     modelValue: "",
-    valueRange: {
-      required: true,
-    },
-    minValue: {
-      type: String,
-      required: true,
-    },
-    maxValue: {
-      type: String,
-      required: true,
-    },
-    stepValue: {
-      type: String,
-      required: true,
-    },
   },
 
   methods: {
@@ -58,7 +38,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped >
 .range {
   position: relative;
 }

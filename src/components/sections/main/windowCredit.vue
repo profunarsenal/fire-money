@@ -5,9 +5,11 @@
       <range-slider
         minValue="1000"
         maxValue="100000"
-        valueRange="50000"
-        stepRange="1000"
+        :valueRange="sumSliderValue"
+        stepValue="1000"
         className="range sum-range"
+        @range="sumSlider"
+        v-model="sumSliderValue"
       />
       <div class="credit-window-prompts">
         <span class="credit-window-prompt">1 000 ₽ </span>
@@ -19,9 +21,11 @@
       <range-slider
         minValue="1"
         maxValue="100"
-        valueRange="50"
-        stepRange="1"
+        :valueRange="termSliderValue"
+        stepValue="1"
         className="range term-range"
+        @range="termSlider"
+        v-model="termSliderValue"
       />
       <div class="credit-window-prompts">
         <span class="credit-window-prompt">от 1 дня</span>
@@ -35,21 +39,21 @@
       <div class="calc-row">
         <div class="calc-item">
           <span class="calc-title">Вы берете</span>
-          <span class="calc-value">20 000 ₽ </span>
+          <span class="calc-value">{{ creditSum }} ₽ </span>
         </div>
         <div class="calc-item">
           <span class="calc-title">К возврату</span>
-          <span class="calc-value">25 650 ₽ </span>
+          <span class="calc-value">{{ returnSum }} ₽ </span>
         </div>
       </div>
       <div class="calc-row">
         <div class="calc-item">
           <span class="calc-title">Дата возврата</span>
-          <span class="calc-value">08 января 2022</span>
+          <span class="calc-value">{{ returnDate }}</span>
         </div>
         <div class="calc-item">
           <span class="calc-title">Ежемесячный платеж</span>
-          <span class="calc-value">5 650 ₽ </span>
+          <span class="calc-value">{{ monthPayment }} ₽ </span>
         </div>
       </div>
     </div>
@@ -64,6 +68,106 @@ export default {
   components: {
     RangeSlider,
     ButtonPrimary,
+  },
+
+  data() {
+    return {
+      sumSliderValue: "50000",
+      termSliderValue: "50",
+      creditSum: 0,
+      returnSum: 0,
+      monthPayment: 0,
+      returnDate: "",
+      monthArray: [
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря",
+      ],
+    };
+  },
+
+  mounted() {
+    this.updateCalc();
+  },
+
+  methods: {
+    updateCalc() {
+      this.creditSum = +this.sumSliderValue;
+      this.returnSum = this.creditSum + this.formulaReturnSum();
+      this.monthPayment = this.formulaMonthPayment();
+      this.returnDate = this.getDateMonthPayment();
+    },
+
+    getDateMonthPayment() {
+      const date = new Date(86400000 * +this.termSliderValue + Date.now());
+
+      return `${date.getDate()} ${
+        this.monthArray[date.getMonth()]
+      } ${date.getFullYear()}`;
+    },
+
+    formulaMonthPayment() {
+      if (+this.termSliderValue <= 30) {
+        return this.returnSum;
+      } else if (+this.termSliderValue > 30 && +this.termSliderValue <= 60) {
+        return this.returnSum / 2;
+      } else {
+        return this.returnSum / 3;
+      }
+    },
+
+    formulaReturnSum() {
+      if (+this.termSliderValue <= 10) {
+        return (this.creditSum / 100) * 8;
+      } else if (+this.termSliderValue > 10 && +this.termSliderValue <= 30) {
+        return (this.creditSum / 100) * 13;
+      } else if (+this.termSliderValue > 30 && +this.termSliderValue <= 60) {
+        return (this.creditSum / 100) * 21;
+      } else {
+        return (this.creditSum / 100) * 26;
+      }
+    },
+
+    termSlider(event, selector, value, progress) {
+      selector.style.left = event.target.value + "%";
+      progress.style.width = event.target.value + "%";
+      value.textContent = event.target.value;
+
+      if (event.target.value > 91) {
+        value.style.cssText += "transform:translateX(-10%)";
+      } else if (event.target.value < 1) {
+        value.style.cssText += "transform:translateX(100%)";
+      } else {
+        value.style.cssText += "transform:translateX(0)";
+      }
+
+      this.updateCalc();
+    },
+
+    sumSlider(event, selector, value, progress) {
+      selector.style.left = event.target.value / 1000 + "%";
+      progress.style.width = event.target.value / 1000 + "%";
+      value.textContent = event.target.value;
+
+      if (event.target.value > 91000) {
+        value.style.cssText += "transform:translateX(-50%)";
+      } else if (event.target.value < 2000) {
+        value.style.cssText += "transform:translateX(10%)";
+      } else {
+        value.style.cssText += "transform:translateX(0)";
+      }
+
+      this.updateCalc();
+    },
   },
 };
 </script>
