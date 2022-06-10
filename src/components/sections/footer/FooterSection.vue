@@ -4,7 +4,7 @@
       <div class="footer-wrapper">
         <div class="footer-header">
           <logo-component class="footer-logo" />
-          <navigation-panel v-if="width >= 1160" />
+          <navigation-panel @scrollTo="scrollById" v-if="width >= 1160" />
           <div class="footer-contacts">
             <a href="mailto: Kustohelp@gmail.com" class="contacts-mail">
               Kustohelp@gmail.com
@@ -14,7 +14,11 @@
             >
           </div>
         </div>
-        <navigation-panel class="footer-nav" v-if="width < 1160" />
+        <navigation-panel
+          @scrollTo="scrollById"
+          class="footer-nav"
+          v-if="width < 1160"
+        />
         <credit-list />
         <div class="banks-cards">
           <div class="cards">
@@ -107,6 +111,12 @@ export default {
     LogoComponent,
     NavigationPanel,
     CreditList,
+  },
+
+  methods: {
+    scrollById(id) {
+      this.$emit("scrollTo", id);
+    },
   },
 
   props: ["width"],

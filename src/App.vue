@@ -1,17 +1,17 @@
 <template>
   <div class="App">
-    <header-section :width="width" />
+    <header-section @scrollTo="scrollToSection" :width="width" />
     <main>
       <main-screen />
       <suggestions-section />
       <receiving-section />
       <payment-section />
-      <reviews-section :width="width" />
+      <reviews-section />
       <clients-section :width="width" />
       <about-section />
       <questions-section />
       <banner-section />
-      <footer-section :width="width" />
+      <footer-section @scrollTo="scrollToSection" :width="width" />
     </main>
   </div>
 </template>
@@ -57,6 +57,15 @@ export default {
   methods: {
     updateWidth() {
       this.width = window.innerWidth;
+    },
+
+    scrollToSection(id) {
+      const section = document.querySelector(id);
+
+      section.scrollIntoView({
+        block: "start",
+        behavior: "smooth",
+      });
     },
   },
 };

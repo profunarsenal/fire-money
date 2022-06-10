@@ -53,12 +53,24 @@ export default {
     margin-right: 28px;
   }
 
+  @media (max-width: 991.98px) {
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+
   @media (max-width: 767.98px) {
-    flex: 0 1 80%;
+    flex: 0 0 80%;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
   }
 
   @media (max-width: 576.98px) {
-    flex: 0 1 100%;
+    flex: 0 0 100%;
     padding: 20px 24px;
   }
 }

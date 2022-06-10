@@ -27,8 +27,33 @@ export default {
 
   data() {
     return {
-      clients: this.$store.getters["getClients"],
+      clients: [],
+      clientsOverWidth: this.$store.getters["getClients"],
+      clientsMaxWidth1040: this.$store.getters["getClients"].slice(0, 2),
+      clientsMaxWidth767: this.$store.getters["getClients"].slice(0, 1),
     };
+  },
+
+  methods: {
+    numberOfClientsPerWidth() {
+      if (this.width <= 767) {
+        this.clients = this.clientsMaxWidth767;
+      } else if (this.width > 767 && this.width <= 1040) {
+        this.clients = this.clientsMaxWidth1040;
+      } else {
+        this.clients = this.clientsOverWidth;
+      }
+    },
+  },
+
+  mounted() {
+    this.numberOfClientsPerWidth();
+  },
+
+  watch: {
+    width() {
+      this.numberOfClientsPerWidth();
+    },
   },
 
   props: ["width"],

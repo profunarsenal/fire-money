@@ -1,5 +1,5 @@
 <template>
-  <section class="questions">
+  <section class="questions" id="questions">
     <div class="container">
       <div class="questions-wrapper">
         <tittle-page class="questions-title" title="Вопросы-ответы" />

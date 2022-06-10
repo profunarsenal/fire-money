@@ -2,17 +2,33 @@
   <nav class="navigation">
     <ul class="menu">
       <li class="menu-item">
-        <a href="#" class="menu-link">Почему мы?</a>
+        <a @click.prevent="scrollById" href="#reviews" class="menu-link"
+          >Почему мы?</a
+        >
       </li>
       <li class="menu-item">
-        <a href="#" class="menu-link">О сервисе</a>
+        <a @click.prevent="scrollById" href="#about" class="menu-link"
+          >О сервисе</a
+        >
       </li>
       <li class="menu-item">
-        <a href="#" class="menu-link">Вопросы-ответы</a>
+        <a @click.prevent="scrollById" href="#questions" class="menu-link"
+          >Вопросы-ответы</a
+        >
       </li>
     </ul>
   </nav>
 </template>
+
+<script>
+export default {
+  methods: {
+    scrollById(event) {
+      this.$emit("scrollTo", event.target.getAttribute("href"));
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .navigation {

@@ -6,6 +6,8 @@
 
 <style lang="scss" scoped>
 .logo {
+  position: relative;
+  z-index: 6;
   margin-right: 20px;
 
   img {
@@ -14,6 +16,8 @@
   }
 
   @media (max-width: 767.98px) {
+    margin-right: 0;
+
     img {
       width: 126px;
       height: 24px;

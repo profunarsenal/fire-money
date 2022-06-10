@@ -1,5 +1,5 @@
 <template>
-  <section class="reviews">
+  <section class="reviews" id="reviews">
     <div class="container">
       <div class="reviews-wrapper">
         <tittle-page class="reviews-title" title="Почему выбирают нас" />
@@ -59,6 +59,18 @@ export default {
   align-items: flex-start;
   justify-content: center;
   margin-bottom: 35px;
+
+  @media (max-width: 991.98px) {
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 767.98px) {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow: scroll;
+    padding-bottom: 25px;
+    margin-bottom: 10px;
+  }
 }
 
 .reviews-btns {
