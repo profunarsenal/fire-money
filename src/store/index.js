@@ -5,6 +5,7 @@ import payments from '@/store/modules/payments'
 import reviews from '@/store/modules/reviews'
 import clients from '@/store/modules/clients'
 import rules from '@/store/modules/rules'
+import spollers from '@/store/modules/spollers'
 
 const store = createStore({
   state: {
@@ -35,7 +36,8 @@ const store = createStore({
     payments,
     reviews,
     clients,
-    rules
+    rules,
+    spollers
   }
 })
 
