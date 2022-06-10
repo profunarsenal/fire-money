@@ -134,7 +134,7 @@ export default {
     updateCalc() {
       this.creditSum = +this.sumSliderValue;
       this.returnSum = this.creditSum + this.formulaReturnSum;
-      this.monthPayment = this.formulaMonthPayment;
+      this.monthPayment = Math.ceil(this.formulaMonthPayment);
       this.returnDate = this.getDateMonthPayment;
     },
 
