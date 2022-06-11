@@ -2,7 +2,7 @@
   <section class="clients">
     <div class="container">
       <div class="clients-wrapper">
-        <tittle-page class="clients-title" title="Наши клиенты" />
+        <title-page class="clients-title" title="Наши клиенты" />
         <div class="clients-items">
           <client-item
             v-for="client in clients"
@@ -16,14 +16,16 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
 import ClientItem from "@/components/sections/clients/ClientItem.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
 
 export default {
   components: {
-    TittlePage,
     ClientItem,
+    TitlePage,
   },
+
+  props: ["width"],
 
   data() {
     return {
@@ -55,8 +57,6 @@ export default {
       this.numberOfClientsPerWidth();
     },
   },
-
-  props: ["width"],
 };
 </script>
 

@@ -24,6 +24,8 @@
 
 <script>
 export default {
+  name: "range-slider",
+
   props: {
     modelValue: "",
     valueRange: {

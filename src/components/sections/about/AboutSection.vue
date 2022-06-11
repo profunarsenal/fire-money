@@ -2,7 +2,7 @@
   <section class="about" id="about">
     <div class="container">
       <div class="about-wrapper">
-        <tittle-page class="about-title" title="О сервисе" />
+        <title-page class="about-title" title="О сервисе" />
         <div class="about-rules">
           <service-rule v-for="rule in rules" :key="rule.id" :rule="rule" />
         </div>
@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
 import ServiceRule from "@/components/sections/about/ServiceRule.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
 
 export default {
   components: {
-    TittlePage,
     ServiceRule,
+    TitlePage,
   },
 
   data() {

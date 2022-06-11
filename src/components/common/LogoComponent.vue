@@ -4,6 +4,12 @@
   </a>
 </template>
 
+<script>
+export default {
+  name: "logo-component",
+};
+</script>
+
 <style lang="scss" scoped>
 .logo {
   position: relative;

@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import reset from '@/assets/style/reset.scss'
-import base from '@/assets/style/base.scss'
 import store from '@/store/index'
+import router from '@/router/index'
 
-const app = createApp(App)
-
-app.use(store).mount('#app')
+createApp(App).
+  use(router).
+  use(store).
+  mount('#app')
 

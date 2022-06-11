@@ -1,7 +1,7 @@
 <template>
   <section class="suggestions">
     <div class="container">
-      <tittle-page class="suggestions-title" title="Лучшие предложения" />
+      <title-page class="suggestions-title" title="Лучшие предложения" />
       <div class="suggestions-items">
         <suggestion-item
           v-for="suggestion in suggestions"
@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
 import SuggestionItem from "@/components/sections/suggestions/SuggestionItem.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
 
 export default {
   components: {
-    TittlePage,
     SuggestionItem,
+    TitlePage,
   },
 
   data() {

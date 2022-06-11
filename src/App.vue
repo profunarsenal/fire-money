@@ -1,50 +1,10 @@
 <template>
-  <div class="App">
-    <header-section @scrollTo="scrollToSection" :width="width" />
-    <main>
-      <main-screen />
-      <suggestions-section />
-      <receiving-section />
-      <payment-section />
-      <reviews-section />
-      <clients-section :width="width" />
-      <about-section />
-      <questions-section />
-      <banner-section />
-      <footer-section @scrollTo="scrollToSection" :width="width" />
-    </main>
-  </div>
+  <router-view :width="width"></router-view>
 </template>
 
 <script>
-import HeaderSection from "@/components/sections/header/HeaderSection.vue";
-import MainScreen from "@/components/sections/main/MainScreen.vue";
-import SuggestionsSection from "@/components/sections/suggestions/SuggestionsSection.vue";
-import ReceivingSection from "@/components/sections/receiving/ReceivingSection.vue";
-import PaymentSection from "@/components/sections/payments/PaymentSection.vue";
-import ReviewsSection from "@/components/sections/review/ReviewsSection.vue";
-import ClientsSection from "@/components/sections/clients/ClientsSection.vue";
-import AboutSection from "@/components/sections/about/AboutSection.vue";
-import QuestionsSection from "@/components/sections/questions/QuestionsSection.vue";
-import BannerSection from "@/components/sections/banner/BannerSection.vue";
-import FooterSection from "@/components/sections/footer/FooterSection.vue";
-
 export default {
   name: "App",
-
-  components: {
-    HeaderSection,
-    MainScreen,
-    SuggestionsSection,
-    ReceivingSection,
-    PaymentSection,
-    ReviewsSection,
-    ClientsSection,
-    AboutSection,
-    QuestionsSection,
-    BannerSection,
-    FooterSection,
-  },
 
   data: () => ({
     width: window.innerWidth,
@@ -58,18 +18,107 @@ export default {
     updateWidth() {
       this.width = window.innerWidth;
     },
-
-    scrollToSection(id) {
-      const section = document.querySelector(id);
-
-      section.scrollIntoView({
-        block: "start",
-        behavior: "smooth",
-      });
-    },
   },
 };
 </script>
 
 <style>
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  min-width: 320px;
+  color: #536473;
+  background: #f6f9fc;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.container {
+  max-width: 1310px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
 </style>

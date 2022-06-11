@@ -2,7 +2,7 @@
   <section class="questions" id="questions">
     <div class="container">
       <div class="questions-wrapper">
-        <tittle-page class="questions-title" title="Вопросы-ответы" />
+        <title-page class="questions-title" title="Вопросы-ответы" />
         <div class="questions-spollers">
           <question-spoller
             v-for="spoller in spollers"
@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
 import QuestionSpoller from "@/components/sections/questions/QuestionSpoller.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
 
 export default {
   components: {
-    TittlePage,
     QuestionSpoller,
+    TitlePage,
   },
 
   data() {

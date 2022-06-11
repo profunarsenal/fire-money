@@ -2,7 +2,7 @@
   <section class="reviews" id="reviews">
     <div class="container">
       <div class="reviews-wrapper">
-        <tittle-page class="reviews-title" title="Почему выбирают нас" />
+        <title-page class="reviews-title" title="Почему выбирают нас" />
         <div class="reviews-items">
           <review-item
             v-for="review in reviews"
@@ -20,15 +20,15 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
-import ButtonPrimary from "@/components/repeating-components/ButtonPrimary.vue";
 import ReviewItem from "@/components/sections/review/ReviewItem.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
+import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
 
 export default {
   components: {
-    TittlePage,
-    ButtonPrimary,
     ReviewItem,
+    TitlePage,
+    ButtonPrimary,
   },
 
   data() {
@@ -36,8 +36,6 @@ export default {
       reviews: this.$store.getters["getReviews"],
     };
   },
-
-  props: ["width"],
 };
 </script>
 

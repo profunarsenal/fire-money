@@ -102,15 +102,15 @@
 </template>
 
 <script>
-import LogoComponent from "@/components/repeating-components/LogoComponent.vue";
-import NavigationPanel from "@/components/repeating-components/NavigationPanel.vue";
+import NavigationPanel from "@/components/common/NavigationPanel.vue";
+import LogoComponent from "@/components/common/LogoComponent.vue";
 import CreditList from "@/components/sections/footer/CreditList.vue";
 
 export default {
   components: {
-    LogoComponent,
     NavigationPanel,
     CreditList,
+    LogoComponent,
   },
 
   methods: {

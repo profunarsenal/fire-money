@@ -2,7 +2,7 @@
   <section class="receiving">
     <div class="container">
       <div class="receiving-wrapper">
-        <tittle-page class="receiving-title" title="Как получить деньги" />
+        <title-page class="receiving-title" title="Как получить деньги" />
         <div class="receiving-scheme">
           <div class="scheme-item scheme-item--finished">
             <img
@@ -52,12 +52,12 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
-import ButtonPrimary from "@/components/repeating-components/ButtonPrimary.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
+import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
 
 export default {
   components: {
-    TittlePage,
+    TitlePage,
     ButtonPrimary,
   },
 };

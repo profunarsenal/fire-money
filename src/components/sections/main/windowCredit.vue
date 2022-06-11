@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import RangeSlider from "@/components/repeating-components/RangeSlider.vue";
-import ButtonPrimary from "@/components/repeating-components/ButtonPrimary.vue";
+import RangeSlider from "@/components/common/RangeSlider.vue";
+import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
 
 export default {
   components: {

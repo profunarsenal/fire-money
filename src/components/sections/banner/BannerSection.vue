@@ -3,7 +3,7 @@
     <div class="container">
       <div class="banner-wrapper">
         <div class="banner-content">
-          <tittle-page
+          <title-page
             class="banner-title"
             title="Получи деньги здесь и сейчас"
           />
@@ -16,7 +16,6 @@
         </div>
         <div class="banner-image">
           <img src="@/assets/images/banner-girl.png" alt="banner" />
-          <!-- <img src="@/assets/images/banner-sun.svg" alt="banner" /> -->
         </div>
       </div>
     </div>
@@ -24,12 +23,12 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
-import ButtonPrimary from "@/components/repeating-components/ButtonPrimary.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
+import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
 
 export default {
   components: {
-    TittlePage,
+    TitlePage,
     ButtonPrimary,
   },
 };

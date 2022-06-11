@@ -4,6 +4,8 @@
 
 <script>
 export default {
+  name: "title-page",
+
   props: {
     title: {
       type: String,

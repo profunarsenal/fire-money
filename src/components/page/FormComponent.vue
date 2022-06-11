@@ -1,0 +1,68 @@
+<template>
+  <div class="form-credit">
+    <div class="container">
+      <div class="form-credit-wrapper">
+        <title-page title="Для получения займа под 0%*" />
+        <title-page class="subtitle" title="Заполните заявку" />
+        <form class="form">
+          <p class="form-message">
+            Поторопитесь, до окончания акционного предложения осталось
+          </p>
+          <div class="form-timer">
+            <timer-component />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import TitlePage from "@/components/common/TitlePage.vue";
+import TimerComponent from "@/components/page/TimerComponent.vue";
+
+export default {
+  components: {
+    TitlePage,
+    TimerComponent,
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.subtitle {
+  color: #ff7b00;
+}
+
+.form-credit {
+  background-image: url("@/assets/images/page-bg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.form-credit-wrapper {
+  padding: 40px 0 70px;
+}
+
+.form {
+  margin-top: 32px;
+  padding: 38px;
+  background: #fff;
+  box-shadow: 0px 4px 44px rgba(130, 141, 150, 0.15);
+  border-radius: 22px;
+}
+
+.form-message {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #45515f;
+}
+
+.form-timer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+</style>

@@ -2,7 +2,7 @@
   <section class="payment">
     <div class="container">
       <div class="payment-wrapper">
-        <tittle-page class="payment-title" title="Способы получения" />
+        <title-page class="payment-title" title="Способы получения" />
         <h5 class="payment-subtitle">На карту QIWI Yandex Деньги Наличные</h5>
         <div class="payment-methods">
           <payment-method
@@ -20,15 +20,15 @@
 </template>
 
 <script>
-import TittlePage from "@/components/repeating-components/TittlePage.vue";
-import ButtonPrimary from "@/components/repeating-components/ButtonPrimary.vue";
 import PaymentMethod from "@/components/sections/payments/PaymentMethod.vue";
+import TitlePage from "@/components/common/TitlePage.vue";
+import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
 
 export default {
   components: {
-    TittlePage,
-    ButtonPrimary,
     PaymentMethod,
+    TitlePage,
+    ButtonPrimary,
   },
 
   data() {
