@@ -2,13 +2,14 @@
   <div class="form-credit">
     <div class="container">
       <div class="form-credit-wrapper">
-        <title-page title="Для получения займа под 0%*" />
+        <title-page v-if="actionTime" title="Для получения займа под 0%*" />
+        <title-page v-if="!actionTime" title="Для получения займа" />
         <title-page class="subtitle" title="Заполните заявку" />
         <form class="form">
           <p class="form-message">
             Поторопитесь, до окончания акционного предложения осталось
           </p>
-          <div class="form-timer">
+          <div v-if="actionTime" class="form-timer">
             <timer-component />
           </div>
         </form>
@@ -25,6 +26,16 @@ export default {
   components: {
     TitlePage,
     TimerComponent,
+  },
+
+  data() {
+    return {
+      actionTime: true,
+    };
+  },
+
+  methods: {
+    removeTimer(status) {},
   },
 };
 </script>

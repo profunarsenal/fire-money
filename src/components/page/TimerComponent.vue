@@ -2,16 +2,16 @@
   <div class="timer">
     <div class="hour">
       <div class="hour-wrap">
-        <span class="hour-card">0</span>
-        <span class="hour-card">2</span>
+        <span class="hour-card">{{ cardHour1 }}</span>
+        <span class="hour-card">{{ cardHour2 }}</span>
       </div>
       <div class="hour-text">часа</div>
     </div>
     <span v-if="timerDot" class="dots"></span>
     <div class="minute">
       <div class="minute-wrap">
-        <span class="minute-card">5</span>
-        <span class="minute-card">5</span>
+        <span class="minute-card">{{ cardMinute1 }}</span>
+        <span class="minute-card">{{ cardMinute2 }}</span>
       </div>
       <div class="minute-text">минут</div>
     </div>
@@ -22,14 +22,95 @@
 export default {
   data() {
     return {
+      clockTimer: null,
       timerDot: true,
+      cardHour1: "",
+      cardHour2: "",
+      cardMinute1: "",
+      cardMinute2: "",
+      timeRemaining: 0,
+      hours: 0,
+      minutes: 0,
+      time: 5000,
     };
   },
 
   mounted() {
-    setInterval(() => {
-      this.timerDot = !this.timerDot;
-    }, 1000);
+    this.$emit("timerOff", false);
+    // this.initTimer();
+    // this.startTimer();
+    this.initDots();
+  },
+
+  watch: {
+    timeRemaining() {
+      localStorage.setItem("timer", JSON.stringify(this.timeRemaining));
+    },
+
+    cardHour1() {
+      this.cardHour1 =
+        this.hours < 10 ? `0${this.hours}`[0] : this.hours.toString()[0];
+    },
+
+    cardHour2() {
+      this.cardHour2 =
+        this.hours < 10 ? `0${this.hours}`[1] : this.hours.toString()[1];
+    },
+
+    cardMinute1() {
+      this.cardMinute1 =
+        this.minutes < 10 ? `0${this.minutes}`[0] : this.minutes.toString()[0];
+    },
+
+    cardMinute2() {
+      this.cardMinute2 =
+        this.minutes < 10 ? `0${this.minutes}`[1] : this.minutes.toString()[1];
+    },
+  },
+
+  methods: {
+    initTimer() {
+      if (localStorage.getItem("timer")) {
+        this.timeRemaining = JSON.parse(localStorage.getItem("timer"));
+      } else {
+        localStorage.setItem("timer", JSON.stringify(this.time));
+        this.timeRemaining = JSON.parse(localStorage.getItem("timer"));
+      }
+    },
+
+    updateClock() {
+      this.hours = Math.floor((this.timeRemaining / 1000 / 60 / 60) % 24);
+      this.minutes = Math.floor((this.timeRemaining / 1000 / 60) % 60);
+
+      this.cardHour1 =
+        this.hours < 10 ? `0${this.hours}`[0] : this.hours.toString()[0];
+      this.cardHour2 =
+        this.hours < 10 ? `0${this.hours}`[1] : this.hours.toString()[1];
+      this.cardMinute1 =
+        this.minutes < 10 ? `0${this.minutes}`[0] : this.minutes.toString()[0];
+      this.cardMinute2 =
+        this.minutes < 10 ? `0${this.minutes}`[1] : this.minutes.toString()[1];
+    },
+
+    startTimer() {
+      this.updateClock();
+
+      this.clockTimer = setInterval(() => {
+        if (this.timeRemaining > 0) {
+          this.timeRemaining -= 1000;
+          this.updateClock();
+        } else {
+          this.$emit("timerOff", false);
+          clearInterval(this.clockTimer);
+        }
+      }, 1000);
+    },
+
+    initDots() {
+      setInterval(() => {
+        this.timerDot = !this.timerDot;
+      }, 1000);
+    },
   },
 };
 </script>
