@@ -27,10 +27,10 @@ export default {
     TitlePage,
   },
 
-  data() {
-    return {
-      suggestions: this.$store.getters["getSuggestions"],
-    };
+  computed: {
+    suggestions() {
+      return this.$store.getters["getSuggestions"];
+    },
   },
 };
 </script>

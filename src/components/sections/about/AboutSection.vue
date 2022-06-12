@@ -21,10 +21,10 @@ export default {
     TitlePage,
   },
 
-  data() {
-    return {
-      rules: this.$store.getters["getRules"],
-    };
+  computed: {
+    rules() {
+      return this.$store.getters["getRules"];
+    },
   },
 };
 </script>

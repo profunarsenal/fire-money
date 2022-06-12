@@ -25,10 +25,10 @@ export default {
     TitlePage,
   },
 
-  data() {
-    return {
-      spollers: this.$store.getters["getSpollers"],
-    };
+  computed: {
+    spollers() {
+      return this.$store.getters["getSpollers"];
+    },
   },
 };
 </script>

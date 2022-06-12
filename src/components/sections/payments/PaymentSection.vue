@@ -31,10 +31,10 @@ export default {
     ButtonPrimary,
   },
 
-  data() {
-    return {
-      payments: this.$store.getters["getPayments"],
-    };
+  computed: {
+    payments() {
+      return this.$store.getters["getPayments"];
+    },
   },
 };
 </script>

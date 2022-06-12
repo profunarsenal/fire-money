@@ -30,10 +30,21 @@ export default {
   data() {
     return {
       clients: [],
-      clientsOverWidth: this.$store.getters["getClients"],
-      clientsMaxWidth1040: this.$store.getters["getClients"].slice(0, 2),
-      clientsMaxWidth767: this.$store.getters["getClients"].slice(0, 1),
     };
+  },
+
+  computed: {
+    clientsOverWidth() {
+      return this.$store.getters["getClients"];
+    },
+
+    clientsMaxWidth1040() {
+      return this.$store.getters["getClients"].slice(0, 2);
+    },
+
+    clientsMaxWidth767() {
+      return this.$store.getters["getClients"].slice(0, 1);
+    },
   },
 
   methods: {
