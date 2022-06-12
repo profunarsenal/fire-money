@@ -6,6 +6,7 @@ import reviews from '@/store/modules/reviews'
 import clients from '@/store/modules/clients'
 import rules from '@/store/modules/rules'
 import spollers from '@/store/modules/spollers'
+import timer from '@/store/modules/timer'
 
 const store = createStore({
   state: {
@@ -37,7 +38,8 @@ const store = createStore({
     reviews,
     clients,
     rules,
-    spollers
+    spollers,
+    timer
   }
 })
 

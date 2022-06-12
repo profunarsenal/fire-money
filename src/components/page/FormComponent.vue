@@ -2,14 +2,14 @@
   <div class="form-credit">
     <div class="container">
       <div class="form-credit-wrapper">
-        <title-page v-if="actionTime" title="Для получения займа под 0%*" />
-        <title-page v-if="!actionTime" title="Для получения займа" />
+        <title-page v-if="isTimeStatus" title="Для получения займа под 0%*" />
+        <title-page v-if="!isTimeStatus" title="Для получения займа" />
         <title-page class="subtitle" title="Заполните заявку" />
         <form class="form">
-          <p class="form-message">
+          <p v-if="isTimeStatus" class="form-message">
             Поторопитесь, до окончания акционного предложения осталось
           </p>
-          <div v-if="actionTime" class="form-timer">
+          <div v-if="isTimeStatus" class="form-timer">
             <timer-component />
           </div>
         </form>
@@ -34,8 +34,10 @@ export default {
     };
   },
 
-  methods: {
-    removeTimer(status) {},
+  computed: {
+    isTimeStatus() {
+      return this.$store.getters["getStatus"];
+    },
   },
 };
 </script>

@@ -28,25 +28,21 @@ export default {
       cardHour2: "",
       cardMinute1: "",
       cardMinute2: "",
+      dateNow: 0,
+      dateEnd: 0,
       timeRemaining: 0,
       hours: 0,
       minutes: 0,
-      time: 5000,
     };
   },
 
   mounted() {
-    this.$emit("timerOff", false);
-    // this.initTimer();
-    // this.startTimer();
+    this.initTimer();
+    this.startTimer();
     this.initDots();
   },
 
   watch: {
-    timeRemaining() {
-      localStorage.setItem("timer", JSON.stringify(this.timeRemaining));
-    },
-
     cardHour1() {
       this.cardHour1 =
         this.hours < 10 ? `0${this.hours}`[0] : this.hours.toString()[0];
@@ -71,14 +67,17 @@ export default {
   methods: {
     initTimer() {
       if (localStorage.getItem("timer")) {
-        this.timeRemaining = JSON.parse(localStorage.getItem("timer"));
+        this.dateEnd = JSON.parse(localStorage.getItem("timer"));
       } else {
-        localStorage.setItem("timer", JSON.stringify(this.time));
-        this.timeRemaining = JSON.parse(localStorage.getItem("timer"));
+        this.dateNow = new Date().getTime();
+        this.dateEnd = this.dateNow + 54000000;
+        localStorage.setItem("timer", this.dateEnd);
       }
     },
 
     updateClock() {
+      this.timeRemaining = this.dateEnd - new Date().getTime();
+
       this.hours = Math.floor((this.timeRemaining / 1000 / 60 / 60) % 24);
       this.minutes = Math.floor((this.timeRemaining / 1000 / 60) % 60);
 
@@ -96,11 +95,10 @@ export default {
       this.updateClock();
 
       this.clockTimer = setInterval(() => {
-        if (this.timeRemaining > 0) {
-          this.timeRemaining -= 1000;
+        if (this.timeRemaining > 10000) {
           this.updateClock();
         } else {
-          this.$emit("timerOff", false);
+          this.$store.dispatch("changeStatus");
           clearInterval(this.clockTimer);
         }
       }, 1000);
