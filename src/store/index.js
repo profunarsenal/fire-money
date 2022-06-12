@@ -7,31 +7,9 @@ import clients from '@/store/modules/clients'
 import rules from '@/store/modules/rules'
 import spollers from '@/store/modules/spollers'
 import timer from '@/store/modules/timer'
+import calculator from '@/store/modules/calculator'
 
 const store = createStore({
-  state: {
-    monthArray: [
-      "января",
-      "февраля",
-      "марта",
-      "апреля",
-      "мая",
-      "июня",
-      "июля",
-      "августа",
-      "сентября",
-      "октября",
-      "ноября",
-      "декабря",
-    ],
-  },
-
-  getters: {
-    getMonth(state) {
-      return state.monthArray
-    }
-  },
-
   modules: {
     suggestions,
     payments,
@@ -39,7 +17,8 @@ const store = createStore({
     clients,
     rules,
     spollers,
-    timer
+    timer,
+    calculator
   }
 })
 

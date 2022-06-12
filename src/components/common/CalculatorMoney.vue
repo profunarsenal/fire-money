@@ -198,6 +198,7 @@ export default {
     width: 100%;
     border-radius: 0;
     box-shadow: none;
+    padding: 30px 0 20px;
 
     @media (max-width: 1200.98px) {
       transform: translateX(0);
@@ -209,10 +210,6 @@ export default {
 
     @media (max-width: 810.98px) {
       transform: translateX(0);
-    }
-
-    @media (max-width: 576.98px) {
-      padding: 30px 0 20px;
     }
   }
 }
