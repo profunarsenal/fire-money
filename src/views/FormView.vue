@@ -20,6 +20,10 @@ export default {
   },
 
   props: ["width"],
+
+  mounted() {
+    console.log(this.$router.options.history.location);
+  },
 };
 </script>
 

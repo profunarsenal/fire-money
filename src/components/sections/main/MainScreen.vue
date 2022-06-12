@@ -18,7 +18,7 @@
           <img src="@/assets/images/sun.svg" alt="sun" />
         </div>
         <div class="main-screen-credit">
-          <window-credit />
+          <calculator-money />
         </div>
       </div>
     </div>
@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import windowCredit from "@/components/sections/main/windowCredit.vue";
+import CalculatorMoney from "@/components/common/CalculatorMoney.vue";
 
 export default {
   components: {
-    windowCredit,
+    CalculatorMoney,
   },
 };
 </script>

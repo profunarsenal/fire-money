@@ -12,6 +12,7 @@
           <div v-if="isTimeStatus" class="form-timer">
             <timer-component />
           </div>
+          <calculator-money />
         </form>
       </div>
     </div>
@@ -21,11 +22,13 @@
 <script>
 import TitlePage from "@/components/common/TitlePage.vue";
 import TimerComponent from "@/components/page/TimerComponent.vue";
+import CalculatorMoney from "@/components/common/CalculatorMoney.vue";
 
 export default {
   components: {
     TitlePage,
     TimerComponent,
+    CalculatorMoney,
   },
 
   data() {
@@ -63,6 +66,10 @@ export default {
   background: #fff;
   box-shadow: 0px 4px 44px rgba(130, 141, 150, 0.15);
   border-radius: 22px;
+
+  @media (max-width: 576.98px) {
+    padding: 20px;
+  }
 }
 
 .form-message {
