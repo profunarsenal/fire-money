@@ -13,6 +13,32 @@
             <timer-component />
           </div>
           <calculator-money />
+          <div class="form-inputs">
+            <div class="input-block">
+              <span class="input-title">Фамилия</span>
+              <input-form v-model="form.userSurName" />
+            </div>
+            <div class="input-block">
+              <span class="input-title">Имя</span>
+              <input-form v-model="form.userName" />
+            </div>
+            <div class="input-block">
+              <span class="input-title">Отчество</span>
+              <input-form v-model="form.userPatronymic" />
+            </div>
+            <div class="input-block">
+              <span class="input-title">Телефон</span>
+              <input-form v-model="form.userPhone" />
+            </div>
+            <div class="input-block">
+              <span class="input-title">Дата рождения</span>
+              <input-form v-model="form.userDate" />
+            </div>
+            <div class="input-block">
+              <span class="input-title">Город</span>
+              <input-form v-model="form.userCity" />
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -23,16 +49,26 @@
 import TitlePage from "@/components/common/TitlePage.vue";
 import TimerComponent from "@/components/page/TimerComponent.vue";
 import CalculatorMoney from "@/components/common/CalculatorMoney.vue";
+import inputForm from "@/components/common/InputForm.vue";
 
 export default {
   components: {
     TitlePage,
     TimerComponent,
     CalculatorMoney,
+    inputForm,
   },
 
   data() {
     return {
+      form: {
+        userName: "",
+        userSurName: "",
+        userPatronymic: "",
+        userPhone: "",
+        userDate: "",
+        userCity: "",
+      },
       actionTime: true,
     };
   },
@@ -84,5 +120,35 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+}
+
+.form-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.input-block {
+  flex: 0 1 30%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+
+  @media (max-width: 767.98px) {
+    flex: 0 1 45%;
+  }
+
+  @media (max-width: 576.98px) {
+    flex: 0 1 100%;
+  }
+}
+
+.input-title {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
 }
 </style>
