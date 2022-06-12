@@ -11,6 +11,8 @@ import BannerSection from "@/components/sections/banner/BannerSection.vue";
 import FormComponent from "@/components/page/FormComponent.vue";
 
 export default {
+  name: "form-view",
+
   components: {
     HeaderPages,
     BannerSection,

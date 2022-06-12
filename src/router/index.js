@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import MainView from '@/views/MainView'
-import ReviewView from '@/views/ReviewView'
 
 const routes = [
   {
     path: '/',
+    name: 'main-view',
     component: MainView
   },
   {
-    path: '/review',
-    component: ReviewView
-  },
+    path: '/form',
+    name: 'form-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/FormView.vue')
+  }
 ]
 
 const router = createRouter({

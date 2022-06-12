@@ -28,6 +28,8 @@ import BannerSection from "@/components/sections/banner/BannerSection.vue";
 import FooterSection from "@/components/sections/footer/FooterSection.vue";
 
 export default {
+  name: "main-view",
+
   components: {
     HeaderSection,
     MainScreen,

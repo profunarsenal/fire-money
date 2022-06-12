@@ -1,5 +1,5 @@
 <template>
-  <button class="btn-primary" type="button">
+  <button @click="$router.push('/form')" class="btn-primary" type="button">
     <span>Оформить заявку</span>
   </button>
 </template>

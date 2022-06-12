@@ -1,7 +1,7 @@
 <template>
-  <a href="#" class="logo">
+  <router-link class="logo" to="/">
     <img src="@/assets/images/FireMoney.svg" alt="FireMoney" />
-  </a>
+  </router-link>
 </template>
 
 <script>
