@@ -1,5 +1,11 @@
 <template>
-  <input v-model="modelValue" @input="updateInput" class="input" type="text" />
+  <input
+    v-model="modelValue"
+    @input="updateInput"
+    class="input"
+    type="text"
+    :class="{ 'input-img': inputImg }"
+  />
 </template>
 
 <script>
@@ -8,6 +14,7 @@ export default {
 
   props: {
     modelValue: { String, Number },
+    inputImg: Boolean,
   },
 
   methods: {
@@ -28,7 +35,12 @@ export default {
   border: 1px solid #d3dae2;
   border-radius: 8px;
 
-  &:not(:last-child) {
+  &:focus {
+    border: 1px solid #ff7b00;
   }
+}
+
+.input-img {
+  padding: 10px 35px;
 }
 </style>

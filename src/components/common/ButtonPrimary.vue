@@ -1,12 +1,28 @@
 <template>
-  <button @click="$router.push('/form')" class="btn-primary" type="button">
-    <span>Оформить заявку</span>
+  <button
+    :class="{ 'btn-disabled': disabled }"
+    class="btn-primary"
+    type="button"
+  >
+    <span>{{ title }}</span>
   </button>
 </template>
 
 <script>
 export default {
   name: "button-primary",
+
+  props: {
+    title: {
+      type: String,
+      default: "Оформить заявку",
+    },
+
+    disabled: {
+      type: Boolean,
+      default: true,
+    },
+  },
 };
 </script>
 
@@ -57,5 +73,21 @@ export default {
     font-size: 16px;
     line-height: 19px;
   }
+}
+
+.btn-disabled {
+  cursor: auto;
+  background-image: linear-gradient(
+    to right,
+    #b8b8b8,
+    #8a8a8a,
+    #6e6e6e,
+    #565656
+  );
+  background-position: 100% 0;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 </style>

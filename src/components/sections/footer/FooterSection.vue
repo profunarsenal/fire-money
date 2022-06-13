@@ -6,12 +6,8 @@
           <logo-component class="footer-logo" />
           <navigation-panel @scrollTo="scrollById" v-if="width >= 1160" />
           <div class="footer-contacts">
-            <a href="mailto: Kustohelp@gmail.com" class="contacts-mail">
-              Kustohelp@gmail.com
-            </a>
-            <a href="tel: +78008080080" class="contacts-phone"
-              >8 800 808-00-80</a
-            >
+            <link-email />
+            <link-phone />
           </div>
         </div>
         <navigation-panel
@@ -82,7 +78,6 @@
             >
           </div>
           <div class="footer-social">
-            <button class="unsubscribe-btn" type="button">отписаться</button>
             <div class="social-icons">
               <a href="#" class="social-link">
                 <img src="@/assets/images/icon-social-1.svg" alt="social" />
@@ -105,12 +100,22 @@
 import NavigationPanel from "@/components/common/NavigationPanel.vue";
 import LogoComponent from "@/components/common/LogoComponent.vue";
 import CreditList from "@/components/sections/footer/CreditList.vue";
+import LinkEmail from "@/components/common/LinkEmail.vue";
+import LinkPhone from "@/components/common/LinkPhone.vue";
 
 export default {
   components: {
     NavigationPanel,
     CreditList,
     LogoComponent,
+    LinkEmail,
+    LinkPhone,
+  },
+
+  data() {
+    return {
+      pageHome: this.$router.options.history.location === "/",
+    };
   },
 
   methods: {
@@ -152,70 +157,6 @@ export default {
   @media (max-width: 767.98px) {
     flex-direction: column;
     justify-content: center;
-    margin-top: 20px;
-  }
-}
-
-.contacts-mail {
-  position: relative;
-  padding-left: 32px;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
-  color: #ffffff;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 22px;
-    height: 15px;
-    background-image: url("@/assets/images/letter-icon.svg");
-    background-repeat: no-repeat;
-    transition: all 0.3s;
-  }
-
-  @media (any-hover: hover) {
-    &:hover {
-      &::before {
-        transform: rotate(-360deg);
-      }
-    }
-  }
-}
-
-.contacts-phone {
-  position: relative;
-  padding-left: 29px;
-  margin-left: 50px;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 26px;
-  color: #ffffff;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 19px;
-    height: 19px;
-    background-image: url("@/assets/images/phone-icon.svg");
-    background-repeat: no-repeat;
-    transition: all 0.3s;
-  }
-
-  @media (any-hover: hover) {
-    &:hover {
-      &::before {
-        transform: rotate(-360deg);
-      }
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    margin-left: 0px;
     margin-top: 20px;
   }
 }
@@ -434,31 +375,6 @@ export default {
         width: 1px;
       }
     }
-  }
-}
-
-.unsubscribe-btn {
-  padding: 14px 28px;
-  margin-right: 36px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  text-transform: uppercase;
-  color: #fefefe;
-  border: 1px solid #fefefe;
-  background-color: transparent;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-
-  @media (any-hover: hover) {
-    &:hover {
-      background-color: #fefefe2e;
-    }
-  }
-
-  @media (max-width: 576.98px) {
-    margin-right: 18px;
-    padding: 10px 18px;
   }
 }
 </style>

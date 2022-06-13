@@ -12,7 +12,7 @@
           />
         </div>
         <div class="payment-btn">
-          <button-primary />
+          <button-primary @click="$router.push('/form')" :disabled="false" />
         </div>
       </div>
     </div>

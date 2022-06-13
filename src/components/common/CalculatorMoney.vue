@@ -35,7 +35,7 @@
       </div>
     </div>
     <div v-if="!pathForm" class="btn-block">
-      <button-primary />
+      <button-primary @click="$router.push('/form')" :disabled="false" />
     </div>
     <div class="calculator-block" :class="{ 'calculator-form': pathForm }">
       <div class="calculator-row" :class="{ 'row-form': pathForm }">

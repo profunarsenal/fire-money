@@ -11,7 +11,7 @@
           />
         </div>
         <div class="reviews-btns">
-          <button-primary />
+          <button-primary @click="$router.push('/form')" :disabled="false"/>
           <a href="#" class="reviews-btn">Все отзывы</a>
         </div>
       </div>

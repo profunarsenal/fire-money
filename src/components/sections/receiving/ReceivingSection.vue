@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="receiving-button">
-          <button-primary />
+          <button-primary @click="$router.push('/form')" :disabled="false"/>
         </div>
       </div>
     </div>

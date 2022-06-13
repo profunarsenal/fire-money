@@ -11,7 +11,7 @@
             Без проверки кредитной истории. От 1 000 ₽ за 15 минут.
           </p>
           <div class="banner-btn">
-            <button-primary />
+            <button-primary @click="$router.push('/form')" :disabled="false" />
           </div>
         </div>
         <div class="banner-image">

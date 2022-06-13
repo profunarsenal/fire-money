@@ -3,10 +3,12 @@
   <main class="main">
     <form-component />
   </main>
+  <footer-secton />
 </template>
 
 <script>
 import HeaderPages from "@/components/sections/header/HeaderPages.vue";
+import FooterSecton from "@/components/sections/footer/FooterSection.vue";
 import BannerSection from "@/components/sections/banner/BannerSection.vue";
 import FormComponent from "@/components/page/FormComponent.vue";
 
@@ -17,13 +19,10 @@ export default {
     HeaderPages,
     BannerSection,
     FormComponent,
+    FooterSecton,
   },
 
   props: ["width"],
-
-  mounted() {
-    console.log(this.$router.options.history.location);
-  },
 };
 </script>
 
