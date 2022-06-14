@@ -19,40 +19,75 @@
             <div class="form-inputs">
               <div class="input-block">
                 <span class="input-title">Фамилия</span>
-                <input-form v-model="form.userSurName" />
+                <input-form v-model="v$.userSurName.$model" />
+                <span
+                  class="error-input"
+                  v-for="error in v$.userSurName.$errors"
+                  :key="error.$uid"
+                >
+                  {{ error.$message }}</span
+                >
               </div>
               <div class="input-block">
                 <span class="input-title">Имя</span>
-                <input-form v-model="form.userName" />
+                <input-form v-model="v$.userName.$model" />
+                <span
+                  class="error-input"
+                  v-for="error in v$.userName.$errors"
+                  :key="error.$uid"
+                >
+                  {{ error.$message }}</span
+                >
               </div>
               <div class="input-block">
                 <span class="input-title">Отчество</span>
-                <input-form v-model="form.userPatronymic" />
+                <input-form v-model="v$.userPatronymic.$model" />
+                <span
+                  class="error-input"
+                  v-for="error in v$.userPatronymic.$errors"
+                  :key="error.$uid"
+                >
+                  {{ error.$message }}</span
+                >
               </div>
               <div class="input-block">
                 <span class="input-title">Телефон</span>
-                <input-form v-model="form.userPhone" :inputImg="true" />
+                <input-form
+                  v-model="v$.userPhone.$model"
+                  class="input-img input-phone"
+                />
+                <span
+                  class="error-input"
+                  v-for="error in v$.userPhone.$errors"
+                  :key="error.$uid"
+                >
+                  {{ error.$message }}</span
+                >
                 <img
                   class="input-icon"
                   src="@/assets/images/icon-input-phone.svg"
                   alt="phone"
                 />
               </div>
-              <div class="input-block input-block-date">
+              <div class="input-block">
                 <span class="input-title">Дата рождения</span>
-                <input-form v-model="form.userDate" :inputImg="true" />
+                <datepicker v-model="picked" />
                 <img
                   class="input-icon"
                   src="@/assets/images/icon-input-date.svg"
                   alt="date"
                 />
-                <button class="date-btn" type="button">
-                  <img src="@/assets/images/icon-input-arrow.svg" alt="date" />
-                </button>
               </div>
               <div class="input-block">
                 <span class="input-title">Город</span>
-                <input-form v-model="form.userCity" :inputImg="true" />
+                <input-form v-model="v$.userCity.$model" class="input-img" />
+                <span
+                  class="error-input"
+                  v-for="error in v$.userCity.$errors"
+                  :key="error.$uid"
+                >
+                  {{ error.$message }}</span
+                >
                 <img
                   class="input-icon"
                   src="@/assets/images/icon-input-city.png"
@@ -87,12 +122,11 @@
           </div>
           <div class="form-btn">
             <button-primary
-              @click="sendForm"
+              @click="submitForm"
               :disabled="buttonDisabled"
               title="Оформить"
             />
           </div>
-          <date-pick></date-pick>
         </form>
       </div>
     </div>
@@ -105,8 +139,13 @@ import TimerComponent from "@/components/page/TimerComponent.vue";
 import CalculatorMoney from "@/components/common/CalculatorMoney.vue";
 import inputForm from "@/components/common/InputForm.vue";
 import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
-import DatePick from "vue-date-pick";
-import "vue-date-pick/dist/vueDatePick.css";
+
+import Datepicker from "vue3-datepicker";
+import { ref } from "vue";
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+import { helpers } from "@vuelidate/validators";
+import { myPhone, myText } from "@/validators/validators";
 
 export default {
   components: {
@@ -115,21 +154,57 @@ export default {
     CalculatorMoney,
     inputForm,
     ButtonPrimary,
-    DatePick,
+    Datepicker,
+  },
+
+  setup() {
+    const picked = ref(new Date());
+
+    return {
+      picked,
+      v$: useVuelidate(),
+    };
+  },
+
+  mounted() {
+    this.datepickerStyle();
   },
 
   data() {
     return {
-      form: {
-        userName: "",
-        userSurName: "",
-        userPatronymic: "",
-        userPhone: "",
-        userDate: "",
-        userCity: "",
-      },
+      userName: "",
+      userSurName: "",
+      userPatronymic: "",
+      userPhone: "+7",
+      userDate: "",
+      userCity: "",
       actionTime: true,
       buttonDisabled: true,
+    };
+  },
+
+  validations() {
+    return {
+      userName: {
+        required: helpers.withMessage("Обязательное поле", required),
+        myText: helpers.withMessage("Только буквы на русском языке", myText),
+      },
+      userSurName: {
+        required: helpers.withMessage("Обязательное поле", required),
+        myText: helpers.withMessage("Только буквы на русском языке", myText),
+      },
+      userPatronymic: {
+        required: helpers.withMessage("Обязательное поле", required),
+        myText: helpers.withMessage("Только буквы на русском языке", myText),
+      },
+      userCity: {
+        required: helpers.withMessage("Обязательное поле", required),
+        myText: helpers.withMessage("Только буквы на русском языке", myText),
+      },
+      userPhone: {
+        required: helpers.withMessage("Обязательное поле", required),
+        myPhone: helpers.withMessage("Неверный формат номера", myPhone),
+      },
     };
   },
 
@@ -140,10 +215,30 @@ export default {
   },
 
   methods: {
-    sendForm() {
+    async submitForm() {
       if (!this.buttonDisabled) {
-        console.log(this.form);
+        const isFormCorrect = await this.v$.$validate();
+        if (!isFormCorrect) return;
+
+        console.log(this.userName);
       }
+    },
+
+    datepickerStyle() {
+      const datepicker = document.querySelector(".v3dp__input_wrapper > input");
+      datepicker.style.cssText += `
+      position: relative;
+      z-index: 2;
+      flex-grow: 1;
+      width: 100%;
+      min-height: 50px;
+      padding: 10px 45px;
+      font-size: 16px;
+      color: #45515f;
+      border: 1px solid #d3dae2;
+      border-radius: 8px;
+      background-color: transparent;
+    `;
     },
   },
 };
@@ -209,7 +304,7 @@ export default {
   flex: 0 1 30%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
 
   @media (max-width: 767.98px) {
     flex: 0 1 45%;
@@ -222,24 +317,11 @@ export default {
 
 .input-icon {
   position: absolute;
+  z-index: 1;
   bottom: 18px;
   left: 15px;
   width: 14px;
   height: 14px;
-}
-
-.date-btn {
-  position: absolute;
-  bottom: 14px;
-  right: 15px;
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-
-  img {
-    width: 14px;
-    height: 14px;
-  }
 }
 
 .input-title {
@@ -322,5 +404,20 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.error-input {
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  color: red;
+  font-size: 13px;
+}
+
+.input-img {
+  position: relative;
+  z-index: 2;
+  padding: 10px 35px;
+  width: 100%;
 }
 </style>

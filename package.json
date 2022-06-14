@@ -7,12 +7,15 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.41",
+    "@vuelidate/validators": "^2.0.0-alpha.29",
+    "@vuepic/vue-datepicker": "^3.2.2",
     "core-js": "^3.8.3",
     "swiper": "^8.2.3",
     "vue": "^3.2.13",
     "vue-awesome-swiper": "^5.0.1",
-    "vue-date-pick": "^1.4.1",
     "vue-router": "^4.0.16",
+    "vue3-datepicker": "^0.3.4",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
