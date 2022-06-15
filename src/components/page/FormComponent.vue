@@ -84,7 +84,12 @@
               </div>
               <div class="input-block">
                 <span class="input-title">Город</span>
-                <input-form v-model="v$.userCity.$model" class="input-img" />
+                <input-form
+                  v-model="v$.userCity.$model"
+                  class="input-img"
+                  @focus="focusInput = true"
+                  @blur="focusInputOff"
+                />
                 <span
                   class="error-input"
                   v-for="error in v$.userCity.$errors"
@@ -98,10 +103,7 @@
                   alt="city"
                 />
                 <ul
-                  v-show="
-                    userCity.length > 0 &&
-                    userCity !== `${cityPrompt0.region} ${cityPrompt0.city}`
-                  "
+                  v-show="focusInput && userCity.length > 0 && cityPrompt0"
                   class="city-list"
                 >
                   <li
@@ -209,6 +211,7 @@ export default {
       userCity: "",
       actionTime: true,
       buttonDisabled: true,
+      focusInput: false,
       citiesList: [],
       cityPrompt0: "",
       cityPrompt1: "",
@@ -273,7 +276,18 @@ export default {
         const isFormCorrect = await this.v$.$validate();
         if (!isFormCorrect) return;
 
-        console.log(this.userName);
+        const user = {
+          userName: this.userName,
+          userSurName: this.userSurName,
+          userPatronymic: this.userPatronymic,
+          userPhone: this.userPhone,
+          userDate: this.userDate,
+          userCity: this.userCity,
+        };
+
+        this.$store.dispatch("changeUser", user);
+
+        this.$router.push("/receiving");
       }
     },
 
@@ -321,6 +335,12 @@ export default {
       border-radius: 8px;
       background-color: transparent;
     `;
+    },
+
+    focusInputOff() {
+      setTimeout(() => {
+        this.focusInput = false;
+      }, 100);
     },
   },
 };
@@ -513,6 +533,7 @@ export default {
 
 .city-list {
   position: absolute;
+  z-index: 2;
   top: 80px;
   left: 0;
   width: 100%;

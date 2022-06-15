@@ -8,6 +8,7 @@ import rules from '@/store/modules/rules'
 import spollers from '@/store/modules/spollers'
 import timer from '@/store/modules/timer'
 import calculator from '@/store/modules/calculator'
+import user from '@/store/modules/user'
 
 const store = createStore({
   modules: {
@@ -18,7 +19,8 @@ const store = createStore({
     rules,
     spollers,
     timer,
-    calculator
+    calculator,
+    user
   }
 })
 
