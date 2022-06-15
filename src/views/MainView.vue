@@ -46,6 +46,10 @@ export default {
 
   props: ["width"],
 
+    mounted() {
+    window.scrollTo(0, 0);
+  },
+
   methods: {
     scrollToSection(id) {
       const section = document.querySelector(id);

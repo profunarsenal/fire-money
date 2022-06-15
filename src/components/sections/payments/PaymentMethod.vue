@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="payment-method">
+  <a @click.prevent="$router.push('/form')" class="payment-method">
     <img
       class="payment-image"
       :src="require(`@/assets/images/${payment.image}`)"
@@ -32,6 +32,7 @@ export default {
   margin-bottom: 20px;
   background: #f6f9fc;
   border-radius: 22px;
+  cursor: pointer;
   transition: all 0.3s;
 
   @media (any-hover: hover) {

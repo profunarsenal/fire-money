@@ -20,6 +20,10 @@ export default {
     FooterSecton,
   },
 
+  mounted() {
+    window.scrollTo(0, 0);
+  },
+
   props: ["width"],
 };
 </script>
