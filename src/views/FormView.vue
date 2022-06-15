@@ -9,7 +9,6 @@
 <script>
 import HeaderPages from "@/components/sections/header/HeaderPages.vue";
 import FooterSecton from "@/components/sections/footer/FooterSection.vue";
-import BannerSection from "@/components/sections/banner/BannerSection.vue";
 import FormComponent from "@/components/page/FormComponent.vue";
 
 export default {
@@ -17,7 +16,6 @@ export default {
 
   components: {
     HeaderPages,
-    BannerSection,
     FormComponent,
     FooterSecton,
   },

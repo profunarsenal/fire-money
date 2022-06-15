@@ -5,6 +5,6 @@ export const myPhone = helpers.regex(
 );
 
 export const myText = helpers.regex(
-  /^[а-яё\s]+$/iu
+  /^[а-яё\s\-\.]+$/iu
 );
 

@@ -57,7 +57,11 @@
                   class="input-img input-phone"
                 />
                 <span
-                  class="error-input"
+                  :class="{
+                    'phone-input':
+                      error.$message === 'Введите номер в формате +7XXXXXXXXXX',
+                    'error-input': error.$message === 'Обязательное поле',
+                  }"
                   v-for="error in v$.userPhone.$errors"
                   :key="error.$uid"
                 >
@@ -93,6 +97,35 @@
                   src="@/assets/images/icon-input-city.png"
                   alt="city"
                 />
+                <ul
+                  v-show="
+                    userCity.length > 0 &&
+                    userCity !== `${cityPrompt0.region} ${cityPrompt0.city}`
+                  "
+                  class="city-list"
+                >
+                  <li
+                    @click="writeCity($event)"
+                    v-if="cityPrompt0"
+                    class="city-item"
+                  >
+                    {{ `${cityPrompt0.region} ${cityPrompt0.city}` }}
+                  </li>
+                  <li
+                    @click="writeCity($event)"
+                    v-if="cityPrompt1"
+                    class="city-item"
+                  >
+                    {{ `${cityPrompt1.region} ${cityPrompt1.city}` }}
+                  </li>
+                  <li
+                    @click="writeCity($event)"
+                    v-if="cityPrompt2"
+                    class="city-item"
+                  >
+                    {{ `${cityPrompt2.region} ${cityPrompt2.city}` }}
+                  </li>
+                </ul>
               </div>
             </div>
             <div class="form-agreement">
@@ -166,10 +199,6 @@ export default {
     };
   },
 
-  mounted() {
-    this.datepickerStyle();
-  },
-
   data() {
     return {
       userName: "",
@@ -180,7 +209,16 @@ export default {
       userCity: "",
       actionTime: true,
       buttonDisabled: true,
+      citiesList: [],
+      cityPrompt0: "",
+      cityPrompt1: "",
+      cityPrompt2: "",
     };
+  },
+
+  mounted() {
+    this.datepickerStyle();
+    this.getCitiesList();
   },
 
   validations() {
@@ -203,7 +241,10 @@ export default {
       },
       userPhone: {
         required: helpers.withMessage("Обязательное поле", required),
-        myPhone: helpers.withMessage("Неверный формат номера", myPhone),
+        myPhone: helpers.withMessage(
+          "Введите номер в формате +7XXXXXXXXXX",
+          myPhone
+        ),
       },
     };
   },
@@ -211,6 +252,18 @@ export default {
   computed: {
     isTimeStatus() {
       return this.$store.getters["getStatus"];
+    },
+
+    filteredCity() {
+      return this.citiesList.filter((city) =>
+        city.city.toLowerCase().includes(this.userCity.toLowerCase())
+      );
+    },
+  },
+
+  watch: {
+    userCity() {
+      this.filteredCitiesList();
     },
   },
 
@@ -222,6 +275,35 @@ export default {
 
         console.log(this.userName);
       }
+    },
+
+    async getCitiesList() {
+      const responce = await fetch(
+        "https://gist.githubusercontent.com/gorborukov/0722a93c35dfba96337b/raw/435b297ac6d90d13a68935e1ec7a69a225969e58/russia"
+      );
+      const data = await responce.json();
+
+      this.citiesList = data;
+    },
+
+    filteredCitiesList() {
+      const findCityList = this.citiesList.filter((city) =>
+        `${city.region.toLowerCase()} ${city.city.toLowerCase()}`.includes(
+          this.userCity.toLowerCase()
+        )
+      );
+
+      this.renderCitiesList(findCityList);
+    },
+
+    renderCitiesList(cities) {
+      this.cityPrompt0 = cities[0];
+      this.cityPrompt1 = cities[1];
+      this.cityPrompt2 = cities[2];
+    },
+
+    writeCity(e) {
+      this.userCity = e.target.outerText;
     },
 
     datepickerStyle() {
@@ -414,10 +496,46 @@ export default {
   font-size: 13px;
 }
 
+.phone-input {
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  color: gray;
+  font-size: 13px;
+}
+
 .input-img {
   position: relative;
   z-index: 2;
   padding: 10px 35px;
   width: 100%;
+}
+
+.city-list {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #d3dae2;
+  border-radius: 8px;
+}
+
+.city-item {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #ff7b00;
+    }
+  }
 }
 </style>
