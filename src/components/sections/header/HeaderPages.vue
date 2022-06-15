@@ -3,7 +3,8 @@
     <div class="container">
       <div class="header-pages-wrapper">
         <logo-component />
-        <button-login :width="width" />
+        <button-login v-if="!statusLogin" :width="width" />
+        <button-exit @click="exit" v-if="statusLogin" />
       </div>
     </div>
   </header>
@@ -12,11 +13,35 @@
 <script>
 import LogoComponent from "@/components/common/LogoComponent.vue";
 import ButtonLogin from "@/components/common/ButtonLogin.vue";
+import ButtonExit from "@/components/common/ButtonExit.vue";
 
 export default {
   components: {
     LogoComponent,
     ButtonLogin,
+    ButtonExit,
+  },
+
+  mounted() {
+    if (localStorage.getItem("auth")) {
+      this.statusLogin = JSON.parse(localStorage.getItem("auth"));
+    } else {
+      this.statusLogin = this.$store.getters["getAuthStatus"];
+    }
+  },
+
+  data() {
+    return {
+      statusLogin: null,
+    };
+  },
+
+  methods: {
+    exit() {
+      this.statusLogin = false;
+      this.$store.dispatch("changeStatus", false);
+      localStorage.setItem("auth", JSON.stringify(false));
+    },
   },
 
   props: ["width"],

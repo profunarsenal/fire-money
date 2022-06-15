@@ -38,5 +38,12 @@ export default {
   &:focus {
     border: 1px solid #c9c9c9;
   }
+
+  &::placeholder {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: #b5b5b5;
+  }
 }
 </style>

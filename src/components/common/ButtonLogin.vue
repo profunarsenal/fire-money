@@ -1,5 +1,5 @@
 <template>
-  <button class="header-btn" type="button">
+  <button @click="$router.push('/auth')" class="header-btn" type="button">
     {{
       width <= 360
         ? "вход"

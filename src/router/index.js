@@ -22,7 +22,12 @@ const routes = [
     path: '/receiving',
     name: 'receiving-page',
     component: () => import(/* webpackChunkName: "about" */ '../views/ReceivingView.vue')
-  }
+  },
+  {
+    path: '/auth',
+    name: 'auth-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/AuthView.vue')
+  },
 ]
 
 const router = createRouter({

@@ -10,7 +10,8 @@
         />
         <navigation-panel @scrollTo="scrollById" v-if="width > 767" />
         <div class="header-btns">
-          <button-login :width="width" />
+          <button-login v-if="!statusLogin" :width="width" />
+          <button-exit @click="exit" v-if="statusLogin" />
           <button
             class="menu-btn"
             type="button"
@@ -32,6 +33,7 @@ import NavigationPanel from "@/components/common/NavigationPanel.vue";
 import LogoComponent from "@/components/common/LogoComponent.vue";
 import ButtonLogin from "@/components/common/ButtonLogin.vue";
 import MobileMenu from "@/components/sections/header/MobileMenu.vue";
+import ButtonExit from "@/components/common/ButtonExit.vue";
 
 export default {
   components: {
@@ -39,11 +41,21 @@ export default {
     MobileMenu,
     LogoComponent,
     ButtonLogin,
+    ButtonExit,
+  },
+
+  mounted() {
+    if (localStorage.getItem("auth")) {
+      this.statusLogin = JSON.parse(localStorage.getItem("auth"));
+    } else {
+      this.statusLogin = this.$store.getters["getAuthStatus"];
+    }
   },
 
   data() {
     return {
       menuOpen: false,
+      statusLogin: null,
     };
   },
 
@@ -57,6 +69,12 @@ export default {
     scrollById(id) {
       this.$emit("scrollTo", id);
       this.menuOpen = false;
+    },
+
+    exit() {
+      this.statusLogin = false;
+      this.$store.dispatch("changeStatus", false);
+      localStorage.setItem("auth", JSON.stringify(false));
     },
   },
 };
