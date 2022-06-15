@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="suggestions-item">
+  <a @click.prevent="getId(suggestion.id)" href="#" class="suggestions-item">
     <span
       class="suggestions-sticker"
       :class="{
@@ -64,6 +64,12 @@ export default {
       return `${date.getDate()} ${
         this.monthArray[date.getMonth()]
       } ${date.getFullYear()}`;
+    },
+  },
+
+  methods: {
+    getId(id) {
+      this.$emit("getId", id, this.dateReturn);
     },
   },
 };

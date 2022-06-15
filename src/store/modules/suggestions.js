@@ -7,7 +7,7 @@ const suggestions = {
         sum: 15000,
         term: 7,
         interval: 'дней',
-        sumReturn: 15500
+        sumReturn: 15000
       },
       {
         id: 1,
@@ -15,7 +15,7 @@ const suggestions = {
         sum: 25000,
         term: 30,
         interval: 'дней',
-        sumReturn: 27500
+        sumReturn: 25000
       },
       {
         id: 2,
@@ -23,9 +23,9 @@ const suggestions = {
         sum: 45000,
         term: 90,
         interval: 'дней',
-        sumReturn: 50000
+        sumReturn: 45000
       },
-    ]
+    ],
   },
 
   getters: {

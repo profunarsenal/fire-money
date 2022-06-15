@@ -2,11 +2,19 @@
   <div class="form-credit">
     <div class="container">
       <div class="form-credit-wrapper">
-        <title-page title="Для получения займа" />
+        <title-page title="Для получения займа под 0%*" />
         <title-page class="subtitle" title="Заполните заявку" />
         <form class="form">
+          <div v-if="isTimeStatus" class="timer-block">
+            <p class="form-message">
+              Поторопитесь, до окончания акционного предложения осталось
+            </p>
+            <div class="form-timer">
+              <timer-component />
+            </div>
+          </div>
           <div class="form-window">
-            <calculator-money />
+            <action-suggestions />
             <div class="form-inputs">
               <div class="input-block">
                 <span class="input-title">Фамилия</span>
@@ -162,9 +170,10 @@
 
 <script>
 import TitlePage from "@/components/common/TitlePage.vue";
-import CalculatorMoney from "@/components/common/CalculatorMoney.vue";
+import TimerComponent from "@/components/page/TimerComponent.vue";
 import inputForm from "@/components/common/InputForm.vue";
 import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
+import ActionSuggestions from "@/components/sections/suggestions/ActionSuggestions.vue";
 
 import Datepicker from "vue3-datepicker";
 import { ref } from "vue";
@@ -176,10 +185,11 @@ import { myPhone, myText } from "@/validators/validators";
 export default {
   components: {
     TitlePage,
-    CalculatorMoney,
+    TimerComponent,
     inputForm,
     ButtonPrimary,
     Datepicker,
+    ActionSuggestions,
   },
 
   setup() {
@@ -364,8 +374,10 @@ export default {
 }
 
 .form-window {
+  margin-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #f2f2f2;
+  border-top: 1px solid #f2f2f2;
 }
 
 .form-message {

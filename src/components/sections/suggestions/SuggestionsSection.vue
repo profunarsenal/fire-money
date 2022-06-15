@@ -7,6 +7,7 @@
           v-for="suggestion in suggestions"
           :key="suggestion.id"
           :suggestion="suggestion"
+          @getId="openActionForm"
         />
       </div>
       <p class="suggestions-message">
@@ -30,6 +31,17 @@ export default {
   computed: {
     suggestions() {
       return this.$store.getters["getSuggestions"];
+    },
+  },
+
+  methods: {
+    openActionForm(id, date) {
+      localStorage.setItem("actionDate", JSON.stringify(date));
+
+      this.$router.push({
+        name: "action-view",
+        params: { id: id },
+      });
     },
   },
 };
