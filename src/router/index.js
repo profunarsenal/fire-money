@@ -20,13 +20,18 @@ const routes = [
   },
   {
     path: '/receiving',
-    name: 'receiving-page',
+    name: 'receiving-view',
     component: () => import(/* webpackChunkName: "about" */ '../views/ReceivingView.vue')
   },
   {
     path: '/auth',
     name: 'auth-view',
     component: () => import(/* webpackChunkName: "about" */ '../views/AuthView.vue')
+  },
+  {
+    path: '/review',
+    name: 'review-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ReviewView.vue')
   },
 ]
 

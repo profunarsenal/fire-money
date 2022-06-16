@@ -4,6 +4,12 @@
   </a>
 </template>
 
+<script>
+export default {
+  name: 'link-email'
+}
+</script>
+
 <style lang="scss" scoped>
 .contacts-mail {
   position: relative;

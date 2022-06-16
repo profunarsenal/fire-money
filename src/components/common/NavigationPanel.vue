@@ -22,6 +22,8 @@
 
 <script>
 export default {
+  name: "navigation-panel",
+
   methods: {
     scrollById(event) {
       this.$emit("scrollTo", event.target.getAttribute("href"));

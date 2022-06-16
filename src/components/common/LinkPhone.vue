@@ -2,6 +2,12 @@
   <a href="tel: +78008080080" class="contacts-phone">8 800 808-00-80</a>
 </template>
 
+<script>
+export default {
+  name: "link-phone",
+};
+</script>
+
 <style lang="scss" scoped>
 .contacts-phone {
   position: relative;

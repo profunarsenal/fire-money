@@ -1,7 +1,7 @@
 <template>
   <header-pages :width="width" />
   <main class="main">
-    <form-page />
+    <review-page />
   </main>
   <footer-secton />
 </template>
@@ -9,24 +9,17 @@
 <script>
 import HeaderPages from "@/components/header/HeaderPages.vue";
 import FooterSecton from "@/components/footer/FooterSection.vue";
-import FormPage from "@/components/pages/form/FormPage.vue";
+import ReviewPage from "@/components/pages/review/ReviewPage.vue";
 
 export default {
-  name: "form-view",
+  name: "review-view",
 
   components: {
     HeaderPages,
-    FormPage,
     FooterSecton,
-  },
-
-  mounted() {
-    window.scrollTo(0, 0);
+    ReviewPage,
   },
 
   props: ["width"],
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

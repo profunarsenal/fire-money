@@ -14,10 +14,13 @@ import "swiper/css/pagination";
 // more module style...
 
 export default {
+  name: 'swiper-component',
+  
   components: {
     Swiper,
     SwiperSlide,
   },
+
   setup() {
     return {
       modules: [Pagination],

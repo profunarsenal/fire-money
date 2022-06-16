@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import HeaderPages from "@/components/sections/header/HeaderPages.vue";
-import FooterSecton from "@/components/sections/footer/FooterSection.vue";
-import ReceivingPage from "@/components/page/ReceivingPage.vue";
+import HeaderPages from "@/components/header/HeaderPages.vue";
+import FooterSecton from "@/components/footer/FooterSection.vue";
+import ReceivingPage from "@/components/pages/receiving/ReceivingPage.vue";
 
 export default {
   name: "receiving-view",

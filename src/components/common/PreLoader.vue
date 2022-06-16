@@ -4,6 +4,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'pre-loader'
+}
+</script>
+
 <style lang="scss" scoped>
 .square {
   border: 0;

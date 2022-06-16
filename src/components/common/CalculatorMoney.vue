@@ -67,6 +67,8 @@ import RangeSlider from "@/components/common/RangeSlider.vue";
 import ButtonPrimary from "@/components/common/ButtonPrimary.vue";
 
 export default {
+  name: 'calculator-money',
+  
   components: {
     RangeSlider,
     ButtonPrimary,

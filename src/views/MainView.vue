@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import HeaderSection from "@/components/sections/header/HeaderSection.vue";
-import MainScreen from "@/components/sections/main/MainScreen.vue";
-import SuggestionsSection from "@/components/sections/suggestions/SuggestionsSection.vue";
-import ReceivingSection from "@/components/sections/receiving/ReceivingSection.vue";
-import PaymentSection from "@/components/sections/payments/PaymentSection.vue";
-import ReviewsSection from "@/components/sections/review/ReviewsSection.vue";
-import ClientsSection from "@/components/sections/clients/ClientsSection.vue";
-import AboutSection from "@/components/sections/about/AboutSection.vue";
-import QuestionsSection from "@/components/sections/questions/QuestionsSection.vue";
-import BannerSection from "@/components/sections/banner/BannerSection.vue";
-import FooterSection from "@/components/sections/footer/FooterSection.vue";
+import HeaderSection from "@/components/header/HeaderSection.vue";
+import MainScreen from "@/components/main/MainScreen.vue";
+import SuggestionsSection from "@/components/main/sections/suggestions/SuggestionsSection.vue";
+import ReceivingSection from "@/components/main/sections/receiving/ReceivingSection.vue";
+import PaymentSection from "@/components/main/sections/payments/PaymentSection.vue";
+import ReviewsSection from "@/components/main/sections/review/ReviewsSection.vue";
+import ClientsSection from "@/components/main/sections/clients/ClientsSection.vue";
+import AboutSection from "@/components/main/sections/about/AboutSection.vue";
+import QuestionsSection from "@/components/main/sections/questions/QuestionsSection.vue";
+import BannerSection from "@/components/main/sections/banner/BannerSection.vue";
+import FooterSection from "@/components/footer/FooterSection.vue";
 
 export default {
   name: "main-view",
@@ -46,7 +46,7 @@ export default {
 
   props: ["width"],
 
-    mounted() {
+  mounted() {
     window.scrollTo(0, 0);
   },
 
