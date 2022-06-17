@@ -30,9 +30,9 @@ const rules = {
 
   getters: {
     getRules(state) {
-      return state.rules
+      return state.rules;
     }
   }
 }
 
-export default rules
+export default rules;

@@ -46,13 +46,13 @@ export default {
 
 <style lang="scss" scoped>
 .mobile-navigation {
+  display: none;
   position: absolute;
   z-index: 5;
   top: -300%;
   left: 0;
   width: 100%;
   height: auto;
-  display: flex;
   align-items: flex-end;
   justify-content: center;
   background: linear-gradient(278.04deg, #ffc83e 31.99%, #ff9f47 81.27%);
@@ -61,6 +61,10 @@ export default {
 
   &.menu-open {
     top: 0;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
   }
 }
 

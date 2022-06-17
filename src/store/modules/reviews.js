@@ -30,9 +30,9 @@ const reviews = {
 
   getters: {
     getReviews(state) {
-      return state.reviews
+      return state.reviews;
     }
   }
 }
 
-export default reviews
+export default reviews;

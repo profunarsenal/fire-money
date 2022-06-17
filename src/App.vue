@@ -1,24 +1,11 @@
 <template>
-  <router-view :width="width" />
+  <router-view />
 </template>
 
 <script>
+
 export default {
   name: "App",
-
-  data: () => ({
-    width: window.innerWidth,
-  }),
-
-  created() {
-    window.addEventListener("resize", this.updateWidth);
-  },
-
-  methods: {
-    updateWidth() {
-      this.width = window.innerWidth;
-    },
-  },
 };
 </script>
 

@@ -33,8 +33,8 @@
 
 <script>
 export default {
-  name: 'credit-list'
-}
+  name: "credit-list",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -51,7 +51,7 @@ export default {
   text-transform: uppercase;
   color: #ffffff;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     text-align: center;
   }
 }

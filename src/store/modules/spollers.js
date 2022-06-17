@@ -48,9 +48,9 @@ const spollers = {
 
   getters: {
     getSpollers(state) {
-      return state.spollers
+      return state.spollers;
     }
   }
 }
 
-export default spollers
+export default spollers;

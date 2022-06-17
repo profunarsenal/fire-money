@@ -3,18 +3,22 @@
     <div class="container">
       <div class="footer-wrapper">
         <div class="footer-header">
-          <logo-component class="footer-logo" />
-          <navigation-panel @scrollTo="scrollById" v-if="width >= 1160" />
+          <v-logo class="footer-logo" />
+          <v-navigation
+            class="footer-header-nav"
+            @scrollTo="scrollById"
+            v-if="pageHome"
+          />
           <div class="footer-contacts">
-            <link-email />
-            <link-phone />
+            <a href="mailto: Kustohelp@gmail.com" class="contacts-mail">
+              Kustohelp@gmail.com
+            </a>
+            <a href="tel: +78008080080" class="contacts-phone"
+              >8 800 808-00-80</a
+            >
           </div>
         </div>
-        <navigation-panel
-          @scrollTo="scrollById"
-          class="footer-nav"
-          v-if="width < 1160"
-        />
+        <v-navigation @scrollTo="scrollById" class="footer-nav" />
         <credit-list />
         <div class="banks-cards">
           <div class="cards">
@@ -97,21 +101,17 @@
 </template>
 
 <script>
-import NavigationPanel from "@/components/common/NavigationPanel.vue";
-import LogoComponent from "@/components/common/LogoComponent.vue";
+import VNavigation from "@/components/common/VNavigation.vue";
+import VLogo from "@/components/common/VLogo.vue";
 import CreditList from "@/components/footer/CreditList.vue";
-import LinkEmail from "@/components/common/LinkEmail.vue";
-import LinkPhone from "@/components/common/LinkPhone.vue";
 
 export default {
   name: "footer-section",
 
   components: {
-    NavigationPanel,
+    VNavigation,
     CreditList,
-    LogoComponent,
-    LinkEmail,
-    LinkPhone,
+    VLogo,
   },
 
   data() {
@@ -125,8 +125,6 @@ export default {
       this.$emit("scrollTo", id);
     },
   },
-
-  props: ["width"],
 };
 </script>
 
@@ -145,7 +143,7 @@ export default {
   min-height: 116px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     justify-content: center;
     padding: 30px 0;
@@ -156,29 +154,105 @@ export default {
   display: flex;
   align-items: center;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     justify-content: center;
     margin-top: 20px;
   }
 }
 
+.contacts-mail {
+  position: relative;
+  padding-left: 32px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  color: #ffffff;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 15px;
+    background-image: url("@/assets/images/letter-icon.svg");
+    background-repeat: no-repeat;
+    transition: all 0.3s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::before {
+        transform: rotate(-360deg);
+      }
+    }
+  }
+}
+
+.contacts-phone {
+  position: relative;
+  padding-left: 29px;
+  margin-left: 50px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  color: #ffffff;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 19px;
+    height: 19px;
+    background-image: url("@/assets/images/phone-icon.svg");
+    background-repeat: no-repeat;
+    transition: all 0.3s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::before {
+        transform: rotate(-360deg);
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+
+.footer-header-nav {
+  display: block;
+
+  @media (max-width: 1160px) {
+    display: none;
+  }
+}
+
 .footer-nav {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   min-height: 80px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: 1160px) {
+    display: flex;
+  }
 }
 
 .footer-logo {
-  @media (max-width: 480.98px) {
+  @media (max-width: 480px) {
     margin-right: 0;
   }
 }
 
 .banks-cards {
-  @media (min-width: 1080.98px) {
+  @media (min-width: 1080px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -191,11 +265,11 @@ export default {
   align-items: center;
   padding: 25px 0;
 
-  @media (min-width: 1080.98px) {
+  @media (min-width: 1080px) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     justify-content: center;
   }
@@ -208,7 +282,7 @@ export default {
   line-height: 21px;
   color: #ffffff;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     margin-right: 0;
     margin-bottom: 30px;
   }
@@ -218,7 +292,7 @@ export default {
   display: flex;
   align-items: flex-start;
 
-  @media (min-width: 1080.98px) {
+  @media (min-width: 1080px) {
     margin-right: 80px;
   }
 }
@@ -238,7 +312,7 @@ export default {
     text-align: center;
   }
 
-  @media (min-width: 1080.98px) {
+  @media (min-width: 1080px) {
     flex: 0 1 100%;
   }
 }
@@ -268,7 +342,7 @@ export default {
   text-transform: uppercase;
   color: #ffffff;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     text-align: center;
   }
 }
@@ -288,7 +362,7 @@ export default {
   align-items: center;
   padding: 30px 0;
 
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     flex-direction: column;
     justify-content: center;
   }
@@ -299,13 +373,13 @@ export default {
   align-items: center;
   margin-right: auto;
 
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     margin-right: 0;
     margin-bottom: 30px;
     text-align: center;
   }
 
-  @media (max-width: 576.98px) {
+  @media (max-width: 576px) {
     flex-direction: column;
     justify-content: center;
   }
@@ -323,7 +397,7 @@ export default {
   line-height: 21px;
   color: #ffffff;
 
-  @media (max-width: 576.98px) {
+  @media (max-width: 576px) {
     margin-left: 0;
     margin-top: 20px;
   }
@@ -365,7 +439,7 @@ export default {
     }
   }
 
-  @media (max-width: 576.98px) {
+  @media (max-width: 576px) {
     &:not(:last-child) {
       margin-right: 16px;
 

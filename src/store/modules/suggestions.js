@@ -30,9 +30,9 @@ const suggestions = {
 
   getters: {
     getSuggestions(state) {
-      return state.suggestions
+      return state.suggestions;
     }
   }
 }
 
-export default suggestions
+export default suggestions;

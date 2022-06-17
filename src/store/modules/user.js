@@ -17,15 +17,15 @@ const user = {
 
   actions: {
     changeUser({ commit }, payload) {
-      commit('changeUser', payload)
+      commit('changeUser', payload);
     }
   },
 
   getters: {
     getUser(state) {
-      return state.user
+      return state.user;
     }
   }
 }
 
-export default user
+export default user;

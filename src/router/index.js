@@ -1,43 +1,42 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
-import MainView from '@/views/MainView'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
     path: '/',
-    name: 'main-view',
-    component: MainView
+    name: 'home',
+    component: () => import('@/views/Home.vue')
   },
   {
-    path: '/form',
-    name: 'form-view',
-    component: () => import(/* webpackChunkName: "about" */ '../views/FormView.vue')
+    path: '/credit',
+    name: 'credit',
+    component: () => import('@/views/Credit.vue')
   },
   {
     path: '/action/:id',
-    name: 'action-view',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ActionView.vue')
+    name: 'action',
+    component: () => import('@/views/Action.vue')
   },
   {
     path: '/receiving',
-    name: 'receiving-view',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ReceivingView.vue')
+    name: 'receiving',
+    component: () => import('@/views/Receiving.vue')
   },
   {
     path: '/auth',
-    name: 'auth-view',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AuthView.vue')
+    name: 'auth',
+    component: () => import('@/views/Auth.vue')
   },
   {
     path: '/review',
-    name: 'review-view',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ReviewView.vue')
+    name: 'review',
+    component: () => import('@/views/Review.vue')
   },
-]
+];
 
 const router = createRouter({
   routes,
-  history: createWebHistory(process.env.BASE_URL)
-})
+  history: createWebHistory(process.env.BASE_URL),
+  scrollBehavior: () => ({ y: 0 })
+});
 
-export default router
+export default router;

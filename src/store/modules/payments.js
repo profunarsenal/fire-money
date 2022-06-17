@@ -26,9 +26,9 @@ const payments = {
 
   getters: {
     getPayments(state) {
-      return state.payments
+      return state.payments;
     }
   }
 }
 
-export default payments
+export default payments;

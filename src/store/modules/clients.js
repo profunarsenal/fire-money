@@ -27,9 +27,9 @@ const clients = {
 
   getters: {
     getClients(state) {
-      return state.clients
+      return state.clients;
     }
   }
 }
 
-export default clients
+export default clients;

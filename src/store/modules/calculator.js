@@ -18,9 +18,9 @@ const calculator = {
 
   getters: {
     getMonth(state) {
-      return state.monthArray
+      return state.monthArray;
     },
   }
 }
 
-export default calculator
+export default calculator;

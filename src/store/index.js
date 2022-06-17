@@ -1,15 +1,14 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 
-import suggestions from '@/store/modules/suggestions'
-import payments from '@/store/modules/payments'
-import reviews from '@/store/modules/reviews'
-import clients from '@/store/modules/clients'
-import rules from '@/store/modules/rules'
-import spollers from '@/store/modules/spollers'
-import timer from '@/store/modules/timer'
-import calculator from '@/store/modules/calculator'
-import user from '@/store/modules/user'
-import auth from '@/store/modules/auth'
+import suggestions from '@/store/modules/suggestions';
+import payments from '@/store/modules/payments';
+import reviews from '@/store/modules/reviews';
+import clients from '@/store/modules/clients';
+import rules from '@/store/modules/rules';
+import spollers from '@/store/modules/spollers';
+import calculator from '@/store/modules/calculator';
+import user from '@/store/modules/user';
+import auth from '@/store/modules/auth';
 
 const store = createStore({
   modules: {
@@ -19,12 +18,11 @@ const store = createStore({
     clients,
     rules,
     spollers,
-    timer,
     calculator,
     user,
     auth
   }
 })
 
-export default store
+export default store;
 

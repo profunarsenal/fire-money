@@ -1,17 +1,20 @@
 <template>
-  <header class="header" :class="{ 'menu-open': menuOpen }">
+  <header
+    class="header"
+    :class="{ 'menu-open': menuOpen, 'header-page': !pageHome }"
+  >
     <div class="container">
       <div class="header-wrapper">
-        <logo-component />
-        <mobile-menu
+        <v-logo />
+        <mobile-menu @scrollTo="scrollById" :open="menuOpen" />
+        <v-navigation
+          class="header-nav"
           @scrollTo="scrollById"
-          :open="menuOpen"
-          v-if="width <= 767"
+          v-if="pageHome"
         />
-        <navigation-panel @scrollTo="scrollById" v-if="width > 767" />
         <div class="header-btns">
-          <button-login v-if="!statusLogin" :width="width" />
-          <button-exit @click="exit" v-if="statusLogin" />
+          <v-button-login v-if="!statusLogin" />
+          <v-button-exit @click="exit" v-if="statusLogin" />
           <button
             class="menu-btn"
             type="button"
@@ -19,6 +22,7 @@
             :class="{
               'menu-open': menuOpen,
             }"
+            v-if="pageHome"
           >
             <span></span>
           </button>
@@ -29,21 +33,29 @@
 </template>
 
 <script>
-import NavigationPanel from "@/components/common/NavigationPanel.vue";
-import LogoComponent from "@/components/common/LogoComponent.vue";
-import ButtonLogin from "@/components/common/ButtonLogin.vue";
+import VNavigation from "@/components/common/VNavigation.vue";
+import VLogo from "@/components/common/VLogo.vue";
+import VButtonLogin from "@/components/common/VButtonLogin.vue";
 import MobileMenu from "@/components/header/MobileMenu.vue";
-import ButtonExit from "@/components/common/ButtonExit.vue";
+import VButtonExit from "@/components/common/VButtonExit.vue";
 
 export default {
-  name: 'header-section',
-  
+  name: "header-section",
+
   components: {
-    NavigationPanel,
+    VNavigation,
     MobileMenu,
-    LogoComponent,
-    ButtonLogin,
-    ButtonExit,
+    VLogo,
+    VButtonLogin,
+    VButtonExit,
+  },
+
+  data() {
+    return {
+      menuOpen: false,
+      statusLogin: null,
+      pageHome: this.$router.options.history.location === "/",
+    };
   },
 
   mounted() {
@@ -53,15 +65,6 @@ export default {
       this.statusLogin = this.$store.getters["getAuthStatus"];
     }
   },
-
-  data() {
-    return {
-      menuOpen: false,
-      statusLogin: null,
-    };
-  },
-
-  props: ["width"],
 
   methods: {
     toggleMenu() {
@@ -90,7 +93,7 @@ export default {
   width: 100%;
   z-index: 50;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     &::before {
       content: "";
       position: absolute;
@@ -105,12 +108,16 @@ export default {
   }
 
   &.menu-open {
-    @media (max-width: 767.98px) {
+    @media (max-width: 767px) {
       &::before {
         top: 0;
       }
     }
   }
+}
+
+.header-page {
+  background: linear-gradient(278.04deg, #ffc83e 31.99%, #ff9f47 81.27%);
 }
 
 .header-wrapper {
@@ -119,12 +126,20 @@ export default {
   justify-content: space-between;
   min-height: 122px;
 
-  @media (max-width: 1400.98px) {
+  @media (max-width: 1400px) {
     min-height: 100px;
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     min-height: 80px;
+  }
+}
+
+.header-nav {
+  display: block;
+
+  @media (max-width: 767px) {
+    display: none;
   }
 }
 
@@ -178,7 +193,7 @@ export default {
     bottom: 11px;
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 767px) {
     display: block;
   }
 

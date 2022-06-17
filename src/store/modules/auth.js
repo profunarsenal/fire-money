@@ -5,21 +5,21 @@ const auth = {
 
   mutations: {
     changeStatus(state, payload) {
-      state.isAuth = payload
+      state.isAuth = payload;
     }
   },
 
   actions: {
     changeStatus({ commit }, payload) {
-      commit('changeStatus', payload)
+      commit('changeStatus', payload);
     }
   },
 
   getters: {
     getAuthStatus(state) {
-      return state.isAuth
+      return state.isAuth;
     },
   }
 }
 
-export default auth
+export default auth;
