@@ -14,7 +14,13 @@
         />
         <div class="header-btns">
           <v-button-login v-if="!statusLogin" />
-          <v-button-exit @click="exit" v-if="statusLogin" />
+          <button
+            v-if="statusLogin"
+            @click="$router.push('/cabinet')"
+            class="btn-cabinet"
+          >
+            Кабинет
+          </button>
           <button
             class="menu-btn"
             type="button"
@@ -37,7 +43,6 @@ import VNavigation from "@/components/common/VNavigation.vue";
 import VLogo from "@/components/common/VLogo.vue";
 import VButtonLogin from "@/components/common/VButtonLogin.vue";
 import MobileMenu from "@/components/header/MobileMenu.vue";
-import VButtonExit from "@/components/common/VButtonExit.vue";
 
 export default {
   name: "header-section",
@@ -47,23 +52,14 @@ export default {
     MobileMenu,
     VLogo,
     VButtonLogin,
-    VButtonExit,
   },
 
   data() {
     return {
       menuOpen: false,
-      statusLogin: null,
+      statusLogin: JSON.parse(localStorage.getItem("auth")),
       pageHome: this.$router.options.history.location === "/",
     };
-  },
-
-  mounted() {
-    if (localStorage.getItem("auth")) {
-      this.statusLogin = JSON.parse(localStorage.getItem("auth"));
-    } else {
-      this.statusLogin = this.$store.getters["getAuthStatus"];
-    }
   },
 
   methods: {
@@ -74,12 +70,6 @@ export default {
     scrollById(id) {
       this.$emit("scrollTo", id);
       this.menuOpen = false;
-    },
-
-    exit() {
-      this.statusLogin = false;
-      this.$store.dispatch("changeStatus", false);
-      localStorage.setItem("auth", JSON.stringify(false));
     },
   },
 };
@@ -216,6 +206,36 @@ export default {
       left: 8px;
       transform: rotate(-45deg);
     }
+  }
+}
+
+.btn-cabinet {
+  position: relative;
+  z-index: 6;
+  min-height: 40px;
+  padding: 18px 25px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #ff7b00;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #ff7b00;
+      background-color: #ffffff;
+    }
+  }
+
+  @media (max-width: 992px) {
+    padding: 12px 20px;
+    font-size: 12px;
+    line-height: 14px;
   }
 }
 </style>

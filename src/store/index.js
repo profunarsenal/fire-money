@@ -8,7 +8,7 @@ import rules from '@/store/modules/rules';
 import spollers from '@/store/modules/spollers';
 import calculator from '@/store/modules/calculator';
 import user from '@/store/modules/user';
-import auth from '@/store/modules/auth';
+import transactions from '@/store/modules/transactions'
 
 const store = createStore({
   modules: {
@@ -20,7 +20,7 @@ const store = createStore({
     spollers,
     calculator,
     user,
-    auth
+    transactions,
   }
 })
 

@@ -44,7 +44,7 @@
           <span
             :class="{
               'phone-input':
-                error.$message === 'Введите номер в формате +7XXXXXXXXXX',
+                error.$message === 'Введите номер в формате +7 (XXX) XXX-XX-XX',
               'error-input': error.$message === 'Обязательное поле',
             }"
             v-for="error in v$.userPhone.$errors"
@@ -300,7 +300,7 @@ export default {
       userPhone: {
         required: helpers.withMessage("Обязательное поле", required),
         myPhone: helpers.withMessage(
-          "Введите номер в формате +7XXXXXXXXXX",
+          "Введите номер в формате +7 (XXX) XXX-XX-XX",
           myPhone
         ),
       },
