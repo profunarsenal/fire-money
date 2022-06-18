@@ -4,11 +4,30 @@
       <div class="clients-wrapper">
         <v-title class="clients-title" title="Наши клиенты" />
         <div class="clients-items">
-          <client-item
-            v-for="client in clients"
-            :key="client.id"
-            :client="client"
-          />
+          <swiper
+            :autoplay="{
+              delay: 2500,
+              disableOnInteraction: false,
+            }"
+            :slides-per-view="1"
+            :loop="true"
+            :space-between="30"
+            :modules="modules"
+            :breakpoints="{
+              '800': {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              '1240': {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }"
+          >
+            <swiper-slide v-for="client in clients" :key="client.id">
+              <client-item :client="client" />
+            </swiper-slide>
+          </swiper>
         </div>
       </div>
     </div>
@@ -18,6 +37,10 @@
 <script>
 import ClientItem from "@/components/home/sections/clients/ClientItem.vue";
 import VTitle from "@/components/common/VTitle.vue";
+import SwiperClass, { Pagination, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default {
   name: "client-section",
@@ -25,6 +48,14 @@ export default {
   components: {
     ClientItem,
     VTitle,
+    Swiper,
+    SwiperSlide,
+  },
+
+  setup() {
+    return {
+      modules: [Pagination, Autoplay],
+    };
   },
 
   computed: {

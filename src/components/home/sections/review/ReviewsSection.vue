@@ -4,18 +4,36 @@
       <div class="reviews-wrapper">
         <v-title class="reviews-title" title="Почему выбирают нас" />
         <div class="reviews-items">
-          <review-item
-            v-for="review in reviews"
-            :key="review.id"
-            :review="review"
-          />
+          <swiper
+            :slides-per-view="1"
+            :space-between="30"
+            :modules="modules"
+            :loop="true"
+            :breakpoints="{
+              '640': {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              '768': {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              '1124': {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }"
+          >
+            <swiper-slide v-for="review in reviews" :key="review.id">
+              <review-item :review="review" />
+            </swiper-slide>
+          </swiper>
         </div>
-        <div class="reviews-btns">
+        <div class="reviews-btn">
           <v-button-primary
             @click="$router.push('/credit')"
             :disabled="false"
           />
-          <router-link to="/review" class="reviews-btn">Все отзывы</router-link>
         </div>
       </div>
     </div>
@@ -26,6 +44,10 @@
 import ReviewItem from "@/components/home/sections/review/ReviewItem.vue";
 import VTitle from "@/components/common/VTitle.vue";
 import VButtonPrimary from "@/components/common/VButtonPrimary.vue";
+import SwiperClass, { Pagination, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default {
   name: "reviews-section",
@@ -34,6 +56,14 @@ export default {
     ReviewItem,
     VTitle,
     VButtonPrimary,
+    Swiper,
+    SwiperSlide,
+  },
+
+  setup() {
+    return {
+      modules: [Pagination, Autoplay],
+    };
   },
 
   computed: {
@@ -58,64 +88,20 @@ export default {
 }
 
 .reviews-items {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   margin-bottom: 35px;
 
-  @media (max-width: 992px) {
-    flex-wrap: wrap;
-  }
-
   @media (max-width: 767px) {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow: scroll;
-    padding-bottom: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 }
 
-.reviews-btns {
+.reviews-btn {
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media (max-width: 576px) {
     flex-direction: column;
-  }
-}
-
-.reviews-btn {
-  padding: 22px 32px;
-  margin-left: 10px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  text-transform: uppercase;
-  color: #45515f;
-  border: 1px solid #c9d2dd;
-  border-radius: 8px;
-  text-align: center;
-  transition: all 0.3s ease;
-
-  @media (any-hover: hover) {
-    &:hover {
-      color: #ffc83e;
-      border: 1px solid #ffc83e;
-      background-color: #ffffff;
-    }
-  }
-
-  @media (max-width: 767px) {
-    padding: 10px 28px;
-    font-size: 16px;
-    line-height: 19px;
-  }
-
-  @media (max-width: 576px) {
-    margin-left: 0;
-    margin-top: 10px;
   }
 }
 </style>

@@ -8,7 +8,7 @@
     <h6 class="reviews-name">{{ review.user }}</h6>
     <span class="reviews-location">{{ review.city }}</span>
     <p class="reviews-text">
-      {{ review.text }}
+      {{ sliceText(review.text) }}
     </p>
     <div class="reviews-stars">
       <star-on v-for="star in review.grade" :key="star" />
@@ -41,19 +41,27 @@ export default {
       required: true,
     },
   },
+
+  methods: {
+    sliceText(txt) {
+      if (txt.length > 200) {
+        return txt.substring(0, 200) + "…";
+      } else {
+        return txt;
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .reviews-item {
+  height: 455px;
   padding: 50px 44px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 4px 44px rgba(84, 104, 123, 0.05);
   border-radius: 22px;
-
-  &:not(:last-child) {
-    margin-right: 28px;
-  }
+  cursor: grab;
 
   @media (max-width: 992px) {
     &:not(:last-child) {
@@ -63,16 +71,10 @@ export default {
   }
 
   @media (max-width: 767px) {
-    flex: 0 0 80%;
-
-    &:not(:last-child) {
-      margin-right: 20px;
-      margin-bottom: 0;
-    }
+    height: 400px;
   }
 
   @media (max-width: 576px) {
-    flex: 0 0 100%;
     padding: 20px 24px;
   }
 }

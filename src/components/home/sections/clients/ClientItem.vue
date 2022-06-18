@@ -34,6 +34,7 @@ export default {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 4px 44px rgba(84, 104, 123, 0.05);
   border-radius: 22px;
+  cursor: grab;
 
   &:not(:last-child) {
     margin-right: 26px;
