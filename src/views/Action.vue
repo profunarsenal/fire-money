@@ -1,5 +1,4 @@
 <template>
-  <header-section />
   <main class="main">
     <div class="action">
       <div class="container">
@@ -21,12 +20,9 @@
       </div>
     </div>
   </main>
-  <footer-secton />
 </template>
 
 <script>
-import HeaderSection from "@/components/header/HeaderSection.vue";
-import FooterSecton from "@/components/footer/FooterSection.vue";
 import VTitle from "@/components/common/VTitle.vue";
 import ActionTimer from "@/components/blocks/ActionTimer.vue";
 import ActionSuggestions from "@/components/blocks/ActionSuggestions.vue";
@@ -36,8 +32,6 @@ export default {
   name: "action",
 
   components: {
-    FooterSecton,
-    HeaderSection,
     VTitle,
     ActionTimer,
     ActionSuggestions,

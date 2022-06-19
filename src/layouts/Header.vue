@@ -42,7 +42,7 @@
 import VNavigation from "@/components/common/VNavigation.vue";
 import VLogo from "@/components/common/VLogo.vue";
 import VButtonLogin from "@/components/common/VButtonLogin.vue";
-import MobileMenu from "@/components/header/MobileMenu.vue";
+import MobileMenu from "@/components/blocks/MobileMenu.vue";
 
 export default {
   name: "header-section",

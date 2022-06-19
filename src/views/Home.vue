@@ -1,5 +1,4 @@
 <template>
-  <header-section @scrollTo="scrollToSection" />
   <main class="main">
     <main-screen />
     <suggestions-section />
@@ -11,11 +10,9 @@
     <questions-section />
     <banner-section />
   </main>
-  <footer-section @scrollTo="scrollToSection" />
 </template>
 
 <script>
-import HeaderSection from "@/components/header/HeaderSection.vue";
 import MainScreen from "@/components/home/MainScreen.vue";
 import SuggestionsSection from "@/components/home/sections/suggestions/SuggestionsSection.vue";
 import ReceivingSection from "@/components/home/sections/receiving/ReceivingSection.vue";
@@ -25,13 +22,11 @@ import ClientsSection from "@/components/home/sections/clients/ClientsSection.vu
 import AboutSection from "@/components/home/sections/about/AboutSection.vue";
 import QuestionsSection from "@/components/home/sections/questions/QuestionsSection.vue";
 import BannerSection from "@/components/home/sections/banner/BannerSection.vue";
-import FooterSection from "@/components/footer/FooterSection.vue";
 
 export default {
   name: "home",
 
   components: {
-    HeaderSection,
     MainScreen,
     SuggestionsSection,
     ReceivingSection,
@@ -41,18 +36,6 @@ export default {
     AboutSection,
     QuestionsSection,
     BannerSection,
-    FooterSection,
-  },
-
-  methods: {
-    scrollToSection(id) {
-      const section = document.querySelector(id);
-
-      section.scrollIntoView({
-        block: "start",
-        behavior: "smooth",
-      });
-    },
   },
 };
 </script>

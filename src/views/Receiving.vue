@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import HeaderSection from "@/components/header/HeaderSection.vue";
-import FooterSecton from "@/components/footer/FooterSection.vue";
 import VTitle from "@/components/common/VTitle.vue";
 import VPreloader from "@/components/common/VPreloader.vue";
 
@@ -45,8 +43,6 @@ export default {
   name: "receiving",
 
   components: {
-    FooterSecton,
-    HeaderSection,
     VTitle,
     VPreloader,
   },

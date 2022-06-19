@@ -1,47 +1,49 @@
 <template>
-  <div class="cabinet">
-    <div class="container">
-      <div class="cabinet-header">
-        <router-link to="/" class="cabiner-logo">
-          <img src="@/assets/images/cabinet-logo.svg" alt="logo" />
-        </router-link>
-        <div class="cabinet-user">
+  <main class="main">
+    <div class="cabinet">
+      <div class="container">
+        <div class="cabinet-header">
+          <router-link to="/" class="cabiner-logo">
+            <img src="@/assets/images/cabinet-logo.svg" alt="logo" />
+          </router-link>
+          <div class="cabinet-user">
+            <span class="user-name">{{ user.name }}</span>
+            <span class="user-phone">{{ user.phone }}</span>
+          </div>
+          <button @click="leaveCabinet" class="btn-exit" type="button">
+            <img src="@/assets/images/icon-exit.svg" alt="exit" />
+          </button>
+        </div>
+        <div class="mobile-cabinet-user">
           <span class="user-name">{{ user.name }}</span>
           <span class="user-phone">{{ user.phone }}</span>
         </div>
-        <button @click="leaveCabinet" class="btn-exit" type="button">
-          <img src="@/assets/images/icon-exit.svg" alt="exit" />
-        </button>
-      </div>
-      <div class="mobile-cabinet-user">
-        <span class="user-name">{{ user.name }}</span>
-        <span class="user-phone">{{ user.phone }}</span>
-      </div>
-      <div class="cabinet-wrapper">
-        <div class="notifications">
-          <h6 class="notifications-title">СМС Уведомления</h6>
-          <p class="notifications-message">
-            Уведомления о наилучших кредитных предложениях на указанный номер
-            вами номер в заявке.
-          </p>
-          <label class="notifications-checkbox">
-            <input class="checkbox-hide" type="checkbox" />
-            <span class="checkbox-show"></span>
-          </label>
-        </div>
-        <div class="transactions">
-          <h6 class="transactions-title">Ваши транзакции</h6>
-          <ul class="transactions-list">
-            <transaction-item
-              v-for="transaction in transactions"
-              :key="transaction.id"
-              :transaction="transaction"
-            />
-          </ul>
+        <div class="cabinet-wrapper">
+          <div class="notifications">
+            <h6 class="notifications-title">СМС Уведомления</h6>
+            <p class="notifications-message">
+              Уведомления о наилучших кредитных предложениях на указанный номер
+              вами номер в заявке.
+            </p>
+            <label class="notifications-checkbox">
+              <input class="checkbox-hide" type="checkbox" />
+              <span class="checkbox-show"></span>
+            </label>
+          </div>
+          <div class="transactions">
+            <h6 class="transactions-title">Ваши транзакции</h6>
+            <ul class="transactions-list">
+              <transaction-item
+                v-for="transaction in transactions"
+                :key="transaction.id"
+                :transaction="transaction"
+              />
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

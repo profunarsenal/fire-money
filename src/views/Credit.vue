@@ -1,5 +1,4 @@
 <template>
-  <header-section />
   <main class="main">
     <div class="credit">
       <div class="container">
@@ -15,13 +14,10 @@
       </div>
     </div>
   </main>
-  <footer-secton />
 </template>
 
 <script>
 import VTitle from "@/components/common/VTitle.vue";
-import HeaderSection from "@/components/header/HeaderSection.vue";
-import FooterSecton from "@/components/footer/FooterSection.vue";
 import UserForm from "@/components/blocks/UserForm.vue";
 import CalculatorMoney from "@/components/blocks/CalculatorMoney.vue";
 
@@ -29,8 +25,6 @@ export default {
   name: "credit",
 
   components: {
-    FooterSecton,
-    HeaderSection,
     VTitle,
     UserForm,
     CalculatorMoney,
