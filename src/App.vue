@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style>
-@import "~@/assets/normalize.css";
+@import "~@/assets/style/normalize.css";
 
 * {
   padding: 0;
