@@ -65,8 +65,13 @@ export default {
     return {
       menuOpen: false,
       statusLogin: JSON.parse(localStorage.getItem("auth")),
-      pageHome: this.$router.options.history.location === "/",
     };
+  },
+
+  computed: {
+    pageHome() {
+      return this.$route.path === "/";
+    },
   },
 
   methods: {
